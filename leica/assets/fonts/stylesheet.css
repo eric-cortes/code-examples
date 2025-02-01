@@ -1,0 +1,82 @@
+@font-face {
+    font-family: "icons";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../CorporateS_Web/leica-ui.eot?#iefix") format("embedded-opentype"), url("../CorporateS_Web/leica-ui.woff") format("woff"), url("../CorporateS_Web/leica-ui.ttf") format("truetype"), url("../CorporateS_Web/leica-ui.svg#leica_ui") format("svg");
+}
+@font-face {
+    font-family: "CorporateS";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../CorporateS_Web/CorporateS.eot?#iefix") format("embedded-opentype"), url("../CorporateS_Web/CorporateS.woff") format("woff"), url("../CorporateS_Web/CorporateS.ttf") format("truetype"), url("../CorporateS_Web/CorporateS.svg#corporate_s") format("svg");
+}
+@font-face {
+    font-family: "CorporateS";
+    font-style: normal;
+    font-weight: 700;
+    src: url("../CorporateS_Web/CorporateSBold.eot?#iefix") format("embedded-opentype"), url("../CorporateS_Web/CorporateSBold.woff") format("woff"), url("../CorporateS_Web/CorporateSBold.ttf") format("truetype"), url("../CorporateS_Web/CorporateSBold.svg#corporate_sbold") format("svg");
+}
+@font-face {
+    font-family: "CorporateS";
+    font-style: normal;
+    font-weight: 300;
+    src: url("../CorporateS_Web/CorporateSLight.eot?#iefix") format("embedded-opentype"), url("../CorporateS_Web/CorporateSLight.woff") format("woff"), url("../CorporateS_Web/CorporateSLight.ttf") format("truetype");
+}
+
+.expanded48 p, .quote p {
+    font-family: CorporateS,Arial,Helvetica,sans-serif;
+    line-height: 1.6;
+}
+/*@font-face {
+    font-family: 'Corporate S';
+    src: url('CorporateS-Regular.woff2') format('woff2'),
+        url('CorporateS-Regular.woff') format('woff'),
+        url('CorporateS-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Corporate S';
+    src: url('CorporateS-Bold.woff2') format('woff2'),
+        url('CorporateS-Bold.woff') format('woff'),
+        url('CorporateS-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Corporate S';
+    src: url('CorporateS-Regular_1.woff2') format('woff2'),
+        url('CorporateS-Regular_1.woff') format('woff'),
+        url('CorporateS-Regular_1.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Corporate S';
+    src: url('CorporateS-Bold_1.woff2') format('woff2'),
+        url('CorporateS-Bold_1.woff') format('woff'),
+        url('CorporateS-Bold_1.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Corporate S';
+    src: url('CorporateS-Regular_2.woff2') format('woff2'),
+        url('CorporateS-Regular_2.woff') format('woff'),
+        url('CorporateS-Regular_2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Corporate S';
+    src: url('CorporateS-Bold_2.woff2') format('woff2'),
+        url('CorporateS-Bold_2.woff') format('woff'),
+        url('CorporateS-Bold_2.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}*/
