@@ -6,6 +6,19 @@ A collection of code samples from various projects. This repository serves as a 
 [Neos – A New Chapter for Future-Oriented City Cleaning](https://www.remondis-digital.com/news/detail/neos-neues-kapitel-fuer-die-zukunftsorientierte-stadtreinigung/)  
  
 ![Neos Project](img/neos.png)
+![Neos Project](img/neos/1.png)
+![Neos Project](img/neos/2.png)
+![Neos Project](img/neos/3.png)
+![Neos Project](img/neos/4.png)
+![Neos Project](img/neos/5.png)
+![Neos Project](img/neos/6.png)
+
+## Leica Q  
+[Campaign with Virtue Worldwide - Preview:](https://ericcortes.de/leica/)  
+ 
+![Leica Project](img/leica1.png)
+![Leica Project](img/leica2.png)
+![Leica Project](img/leica3.png)
 
 ## Repository Structure
 
