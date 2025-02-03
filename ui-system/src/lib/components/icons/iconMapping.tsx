@@ -1,0 +1,1849 @@
+export const iconMapping: Record<string, (isOutlined: boolean, isDisabled: boolean, fillColor: string) => React.ReactNode> = {
+  Warning: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <rect width="24" height="24" fill=""></rect>
+        <path d="M1 21H23L12 2L1 21ZM13 18H11V16H13V18ZM13 14H11V10H13V14Z" fill={isDisabled ? '#afb0b7' : fillColor !== '' ? fillColor : 'black'} />
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M12 5.99L19.53 19H4.47L12 5.99ZM12 2L1 21H23L12 2ZM13 16H11V18H13V16ZM13 10H11V14H13V10Z"
+          fill={isDisabled ? '#afb0b7' : fillColor !== '' ? fillColor : 'white'}
+        />
+      </svg>
+    ),
+  Error: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
+          fill={isDisabled ? '#afb0b7' : fillColor}
+        />
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M11 15H13V17H11V15ZM11 7H13V13H11V7ZM11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"
+          fill={isDisabled ? '#afb0b7' : fillColor}
+        />
+      </svg>
+    ),
+  Checked: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12ZM17.9601 8.95986L18 8.92L16.59 7.5L10 14.09L7.41 11.51L6 12.92L6.04 12.96L10 16.92L17.9601 8.95986Z"
+          fill={isDisabled ? '#afb0b7' : fillColor}
+        />
+      </svg>
+    ) : (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14235)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.59 7.58L10 14.17L7.41 11.59L6 13L10 17L18 9L16.59 7.58Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14235">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Add: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_264_13558)">
+          <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill={isDisabled ? '#afb0b7' : fillColor} />
+        </g>
+        <defs>
+          <clipPath id="clip0_264_13558">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_264_13558)">
+          <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill={isDisabled ? '#afb0b7' : fillColor} />
+        </g>
+        <defs>
+          <clipPath id="clip0_264_13558">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  AddBox: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14206)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M19 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM11 17H13V13H17V11H13V7H11V11H7V13H11V17Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14206">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14206)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M19 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM11 17H13V13H17V11H13V7H11V11H7V13H11V17Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14206">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  AddCircle: (isOutlined, isDisabled, fillColor) =>
+    isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14208)">
+          <path
+            d="M13 7H11V11H7V13H11V17H13V13H17V11H13V7ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14208">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14207)">
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM17 13H13V17H11V13H7V11H11V7H13V11H17V13Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14207">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Remove: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14209)">
+          <rect width="24" height="24" fill=""></rect>
+          <path d="M19 13H5V11H19V13Z" fill={isDisabled ? '#afb0b7' : fillColor} />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14209">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14209)">
+          <rect width="24" height="24" fill=""></rect>
+          <path d="M19 13H5V11H19V13Z" fill={isDisabled ? '#afb0b7' : fillColor} />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14209">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  RemoveCircle: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14210)">
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM17 13H7V11H17V13Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14210">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14211)">
+          <path
+            d="M7 11V13H17V11H7ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14211">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Block: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14212)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM4 12C4 7.58 7.58 4 12 4C13.85 4 15.55 4.63 16.9 5.69L5.69 16.9C4.63 15.55 4 13.85 4 12ZM12 20C10.15 20 8.45 19.37 7.1 18.31L18.31 7.1C19.37 8.45 20 10.15 20 12C20 16.42 16.42 20 12 20Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14212">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14212)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM4 12C4 7.58 7.58 4 12 4C13.85 4 15.55 4.63 16.9 5.69L5.69 16.9C4.63 15.55 4 13.85 4 12ZM12 20C10.15 20 8.45 19.37 7.1 18.31L18.31 7.1C19.37 8.45 20 10.15 20 12C20 16.42 16.42 20 12 20Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14212">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  ContentCopy: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14213)">
+          <path
+            d="M16 1H4C2.9 1 2 1.9 2 3V17H4V3H16V1ZM19 5H8C6.9 5 6 5.9 6 7V21C6 22.1 6.9 23 8 23H19C20.1 23 21 22.1 21 21V7C21 5.9 20.1 5 19 5ZM19 21H8V7H19V21Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14213">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14213)">
+          <path
+            d="M16 1H4C2.9 1 2 1.9 2 3V17H4V3H16V1ZM19 5H8C6.9 5 6 5.9 6 7V21C6 22.1 6.9 23 8 23H19C20.1 23 21 22.1 21 21V7C21 5.9 20.1 5 19 5ZM19 21H8V7H19V21Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14213">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  SaveAlt: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14214)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M19 12V19H5V12H3V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V12H19ZM13 12.67L15.59 10.09L17 11.5L12 16.5L7 11.5L8.41 10.09L11 12.67V3H13V12.67Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14214">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14214)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M19 12V19H5V12H3V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V12H19ZM13 12.67L15.59 10.09L17 11.5L12 16.5L7 11.5L8.41 10.09L11 12.67V3H13V12.67Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14214">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Unarchive: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14215)">
+          <path
+            d="M20.54 5.23L19.15 3.55C18.88 3.21 18.47 3 18 3H6C5.53 3 5.12 3.21 4.84 3.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V6.5C21 6.02 20.83 5.57 20.54 5.23ZM6.24 5H17.76L18.59 6H5.42L6.24 5ZM5 19V8H19V19H5ZM8 14H10.55V17H13.45V14H16L12 10L8 14Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14215">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14215)">
+          <path
+            d="M20.54 5.23L19.15 3.55C18.88 3.21 18.47 3 18 3H6C5.53 3 5.12 3.21 4.84 3.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V6.5C21 6.02 20.83 5.57 20.54 5.23ZM6.24 5H17.76L18.59 6H5.42L6.24 5ZM5 19V8H19V19H5ZM8 14H10.55V17H13.45V14H16L12 10L8 14Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14215">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  MoreHoriz: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14216)">
+          <path
+            d="M6 10C4.9 10 4 10.9 4 12C4 13.1 4.9 14 6 14C7.1 14 8 13.1 8 12C8 10.9 7.1 10 6 10ZM18 10C16.9 10 16 10.9 16 12C16 13.1 16.9 14 18 14C19.1 14 20 13.1 20 12C20 10.9 19.1 10 18 10ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14216">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14216)">
+          <path
+            d="M6 10C4.9 10 4 10.9 4 12C4 13.1 4.9 14 6 14C7.1 14 8 13.1 8 12C8 10.9 7.1 10 6 10ZM18 10C16.9 10 16 10.9 16 12C16 13.1 16.9 14 18 14C19.1 14 20 13.1 20 12C20 10.9 19.1 10 18 10ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14216">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  MoreVert: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14217)">
+          <path
+            d="M12 8C13.1 8 14 7.1 14 6C14 4.9 13.1 4 12 4C10.9 4 10 4.9 10 6C10 7.1 10.9 8 12 8ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10ZM12 16C10.9 16 10 16.9 10 18C10 19.1 10.9 20 12 20C13.1 20 14 19.1 14 18C14 16.9 13.1 16 12 16Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14217">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14217)">
+          <path
+            d="M12 8C13.1 8 14 7.1 14 6C14 4.9 13.1 4 12 4C10.9 4 10 4.9 10 6C10 7.1 10.9 8 12 8ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10ZM12 16C10.9 16 10 16.9 10 18C10 19.1 10.9 20 12 20C13.1 20 14 19.1 14 18C14 16.9 13.1 16 12 16Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14217">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Menu: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14218)">
+          <rect width="24" height="24" fill=""></rect>
+          <path d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z" fill={isDisabled ? '#afb0b7' : fillColor} />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14218">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14218)">
+          <rect width="24" height="24" fill=""></rect>
+          <path d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z" fill={isDisabled ? '#afb0b7' : fillColor} />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14218">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Refresh: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14219)">
+          <path
+            d="M17.6498 6.35C16.1998 4.9 14.2098 4 11.9998 4C7.57977 4 4.00977 7.58 4.00977 12C4.00977 16.42 7.57977 20 11.9998 20C15.7298 20 18.8398 17.45 19.7298 14H17.6498C16.8298 16.33 14.6098 18 11.9998 18C8.68977 18 5.99977 15.31 5.99977 12C5.99977 8.69 8.68977 6 11.9998 6C13.6598 6 15.1398 6.69 16.2198 7.78L12.9998 11H19.9998V4L17.6498 6.35Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14219">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14219)">
+          <path
+            d="M17.6498 6.35C16.1998 4.9 14.2098 4 11.9998 4C7.57977 4 4.00977 7.58 4.00977 12C4.00977 16.42 7.57977 20 11.9998 20C15.7298 20 18.8398 17.45 19.7298 14H17.6498C16.8298 16.33 14.6098 18 11.9998 18C8.68977 18 5.99977 15.31 5.99977 12C5.99977 8.69 8.68977 6 11.9998 6C13.6598 6 15.1398 6.69 16.2198 7.78L12.9998 11H19.9998V4L17.6498 6.35Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14219">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Move: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14220)">
+          <path
+            d="M12.0002 5.83L15.1702 9L16.5802 7.59L12.0002 3L7.41016 7.59L8.83016 9L12.0002 5.83ZM12.0002 18.17L8.83016 15L7.42016 16.41L12.0002 21L16.5902 16.41L15.1702 15L12.0002 18.17Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14220">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14220)">
+          <path
+            d="M12.0002 5.83L15.1702 9L16.5802 7.59L12.0002 3L7.41016 7.59L8.83016 9L12.0002 5.83ZM12.0002 18.17L8.83016 15L7.42016 16.41L12.0002 21L16.5902 16.41L15.1702 15L12.0002 18.17Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14220">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  South: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14221)">
+          <path
+            d="M19 15L17.59 13.59L13 18.17V2H11V18.17L6.41 13.58L5 15L12 22L19 15Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14221">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14221)">
+          <path
+            d="M19 15L17.59 13.59L13 18.17V2H11V18.17L6.41 13.58L5 15L12 22L19 15Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14221">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  North: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14222)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M5 9L6.41 10.41L11 5.83V22H13V5.83L17.59 10.42L19 9L12 2L5 9Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14222">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14222)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M5 9L6.41 10.41L11 5.83V22H13V5.83L17.59 10.42L19 9L12 2L5 9Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14222">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  West: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14223)">
+          <path
+            d="M9 19L10.41 17.59L5.83 13H22V11H5.83L10.42 6.41L9 5L2 12L9 19Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14223">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14223)">
+          <path
+            d="M9 19L10.41 17.59L5.83 13H22V11H5.83L10.42 6.41L9 5L2 12L9 19Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14223">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  ExpandMore: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14230)">
+          <path
+            d="M16.59 8.58984L12 13.1698L7.41 8.58984L6 9.99984L12 15.9998L18 9.99984L16.59 8.58984Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14230">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14230)">
+          <path
+            d="M16.59 8.58984L12 13.1698L7.41 8.58984L6 9.99984L12 15.9998L18 9.99984L16.59 8.58984Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14230">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  ExpandLess: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14229)">
+          <path d="M12 8L6 14L7.41 15.41L12 10.83L16.59 15.41L18 14L12 8Z" fill={isDisabled ? '#afb0b7' : fillColor} />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14229">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14229)">
+          <path d="M12 8L6 14L7.41 15.41L12 10.83L16.59 15.41L18 14L12 8Z" fill={isDisabled ? '#afb0b7' : fillColor} />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14229">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Close: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14231)">
+          <path
+            d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14231">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14231)">
+          <path
+            d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14231">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Cancel: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14232)">
+          <path
+            d="M12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM15.59 7L12 10.59L8.41 7L7 8.41L10.59 12L7 15.59L8.41 17L12 13.41L15.59 17L17 15.59L13.41 12L17 8.41L15.59 7Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14232">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14232)">
+          <path
+            d="M12 2C6.47 2 2 6.47 2 12C2 17.53 6.47 22 12 22C17.53 22 22 17.53 22 12C22 6.47 17.53 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM15.59 7L12 10.59L8.41 7L7 8.41L10.59 12L7 15.59L8.41 17L12 13.41L15.59 17L17 15.59L13.41 12L17 8.41L15.59 7Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14232">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Delete: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14233)">
+          <path
+            d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14233">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14233)">
+          <path
+            d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14233">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  FilterAlt: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14234)">
+          <path
+            d="M7.00067 6H17.0007L11.9907 12.3L7.00067 6ZM4.25067 5.61C6.27067 8.2 10.0007 13 10.0007 13V19C10.0007 19.55 10.4507 20 11.0007 20H13.0007C13.5507 20 14.0007 19.55 14.0007 19V13C14.0007 13 17.7207 8.2 19.7407 5.61C20.2507 4.95 19.7807 4 18.9507 4H5.04067C4.21067 4 3.74067 4.95 4.25067 5.61Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14234">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14234)">
+          <path
+            d="M7.00067 6H17.0007L11.9907 12.3L7.00067 6ZM4.25067 5.61C6.27067 8.2 10.0007 13 10.0007 13V19C10.0007 19.55 10.4507 20 11.0007 20H13.0007C13.5507 20 14.0007 19.55 14.0007 19V13C14.0007 13 17.7207 8.2 19.7407 5.61C20.2507 4.95 19.7807 4 18.9507 4H5.04067C4.21067 4 3.74067 4.95 4.25067 5.61Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14234">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Edit: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M18.4141 2C18.1581 2 17.902 2.09797 17.707 2.29297L15.707 4.29297L14.293 5.70703L3 17V21H7L21.707 6.29297C22.098 5.90197 22.098 5.26891 21.707 4.87891L19.1211 2.29297C18.9261 2.09797 18.6701 2 18.4141 2ZM18.4141 4.41406L19.5859 5.58594L18.293 6.87891L17.1211 5.70703L18.4141 4.41406ZM15.707 7.12109L16.8789 8.29297L6.17188 19H5V17.8281L15.707 7.12109Z"
+          fill={isDisabled ? '#afb0b7' : fillColor}
+        />
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M18.4141 2C18.1581 2 17.902 2.09797 17.707 2.29297L15.707 4.29297L14.293 5.70703L3 17V21H7L21.707 6.29297C22.098 5.90197 22.098 5.26891 21.707 4.87891L19.1211 2.29297C18.9261 2.09797 18.6701 2 18.4141 2ZM18.4141 4.41406L19.5859 5.58594L18.293 6.87891L17.1211 5.70703L18.4141 4.41406ZM15.707 7.12109L16.8789 8.29297L6.17188 19H5V17.8281L15.707 7.12109Z"
+          fill={isDisabled ? '#afb0b7' : fillColor}
+        />
+      </svg>
+    ),
+  CheckCircle: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14235)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.59 7.58L10 14.17L7.41 11.59L6 13L10 17L18 9L16.59 7.58Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14235">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14235)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.59 7.58L10 14.17L7.41 11.59L6 13L10 17L18 9L16.59 7.58Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14235">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  CalendarToday: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14237)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M20 3H19V1H17V3H7V1H5V3H4C2.9 3 2 3.9 2 5V21C2 22.1 2.9 23 4 23H20C21.1 23 22 22.1 22 21V5C22 3.9 21.1 3 20 3ZM20 21H4V10H20V21ZM20 8H4V5H20V8Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14237">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14237)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M20 3H19V1H17V3H7V1H5V3H4C2.9 3 2 3.9 2 5V21C2 22.1 2.9 23 4 23H20C21.1 23 22 22.1 22 21V5C22 3.9 21.1 3 20 3ZM20 21H4V10H20V21ZM20 8H4V5H20V8Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14237">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  AccountCircle: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14238)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM7.07 18.28C7.5 17.38 10.12 16.5 12 16.5C13.88 16.5 16.51 17.38 16.93 18.28C15.57 19.36 13.86 20 12 20C10.14 20 8.43 19.36 7.07 18.28ZM18.36 16.83C16.93 15.09 13.46 14.5 12 14.5C10.54 14.5 7.07 15.09 5.64 16.83C4.62 15.49 4 13.82 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 13.82 19.38 15.49 18.36 16.83ZM12 6C10.06 6 8.5 7.56 8.5 9.5C8.5 11.44 10.06 13 12 13C13.94 13 15.5 11.44 15.5 9.5C15.5 7.56 13.94 6 12 6ZM12 11C11.17 11 10.5 10.33 10.5 9.5C10.5 8.67 11.17 8 12 8C12.83 8 13.5 8.67 13.5 9.5C13.5 10.33 12.83 11 12 11Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14238">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14238)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM7.07 18.28C7.5 17.38 10.12 16.5 12 16.5C13.88 16.5 16.51 17.38 16.93 18.28C15.57 19.36 13.86 20 12 20C10.14 20 8.43 19.36 7.07 18.28ZM18.36 16.83C16.93 15.09 13.46 14.5 12 14.5C10.54 14.5 7.07 15.09 5.64 16.83C4.62 15.49 4 13.82 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 13.82 19.38 15.49 18.36 16.83ZM12 6C10.06 6 8.5 7.56 8.5 9.5C8.5 11.44 10.06 13 12 13C13.94 13 15.5 11.44 15.5 9.5C15.5 7.56 13.94 6 12 6ZM12 11C11.17 11 10.5 10.33 10.5 9.5C10.5 8.67 11.17 8 12 8C12.83 8 13.5 8.67 13.5 9.5C13.5 10.33 12.83 11 12 11Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14238">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Done: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14241)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M9.00039 16.2001L4.80039 12.0001L3.40039 13.4001L9.00039 19.0001L21.0004 7.0001L19.6004 5.6001L9.00039 16.2001Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14241">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14241)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M9.00039 16.2001L4.80039 12.0001L3.40039 13.4001L9.00039 19.0001L21.0004 7.0001L19.6004 5.6001L9.00039 16.2001Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14241">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  LogIn: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14243)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M11 7L9.6 8.4L12.2 11H2V13H12.2L9.6 15.6L11 17L16 12L11 7ZM20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14243">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14243)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M11 7L9.6 8.4L12.2 11H2V13H12.2L9.6 15.6L11 17L16 12L11 7ZM20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14243">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  OpenWith: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14244)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M10 9H14V6H17L12 1L7 6H10V9ZM9 10H6V7L1 12L6 17V14H9V10ZM23 12L18 7V10H15V14H18V17L23 12ZM14 15H10V18H7L12 23L17 18H14V15Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14244">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14244)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M10 9H14V6H17L12 1L7 6H10V9ZM9 10H6V7L1 12L6 17V14H9V10ZM23 12L18 7V10H15V14H18V17L23 12ZM14 15H10V18H7L12 23L17 18H14V15Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14244">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Search: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14247)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14247">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14247)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14247">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Info: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14250)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M11 7H13V9H11V7ZM11 11H13V17H11V11ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14250">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14250)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M11 7H13V9H11V7ZM11 11H13V17H11V11ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14250">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Help: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14267)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M11 18H13V16H11V18ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12 6C9.79 6 8 7.79 8 10H10C10 8.9 10.9 8 12 8C13.1 8 14 8.9 14 10C14 12 11 11.75 11 15H13C13 12.75 16 12.5 16 10C16 7.79 14.21 6 12 6Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14267">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14267)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M11 18H13V16H11V18ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12 6C9.79 6 8 7.79 8 10H10C10 8.9 10.9 8 12 8C13.1 8 14 8.9 14 10C14 12 11 11.75 11 15H13C13 12.75 16 12.5 16 10C16 7.79 14.21 6 12 6Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14267">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  KeyboardArrowLeft: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14268)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14268">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14268)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14268">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  KeyboardArrowRight: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14269)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M8.58984 16.59L13.1698 12L8.58984 7.41L9.99984 6L15.9998 12L9.99984 18L8.58984 16.59Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14269">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14269)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M8.58984 16.59L13.1698 12L8.58984 7.41L9.99984 6L15.9998 12L9.99984 18L8.58984 16.59Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14269">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  DownloadDone: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14251)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M5 18H19V20H5V18ZM9.6 15.3L5 10.7L7 8.8L9.6 11.4L17 4L19 6L9.6 15.3Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14251">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14251)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M5 18H19V20H5V18ZM9.6 15.3L5 10.7L7 8.8L9.6 11.4L17 4L19 6L9.6 15.3Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14251">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Place: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_463_5630)">
+          <path
+            d="M12 12C10.9 12 10 11.1 10 10C10 8.9 10.9 8 12 8C13.1 8 14 8.9 14 10C14 11.1 13.1 12 12 12ZM18 10.2C18 6.57 15.35 4 12 4C8.65 4 6 6.57 6 10.2C6 12.54 7.95 15.64 12 19.34C16.05 15.64 18 12.54 18 10.2ZM12 2C16.2 2 20 5.22 20 10.2C20 13.52 17.33 17.45 12 22C6.67 17.45 4 13.52 4 10.2C4 5.22 7.8 2 12 2Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_463_5630">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_463_5630)">
+          <path
+            d="M12 12C10.9 12 10 11.1 10 10C10 8.9 10.9 8 12 8C13.1 8 14 8.9 14 10C14 11.1 13.1 12 12 12ZM18 10.2C18 6.57 15.35 4 12 4C8.65 4 6 6.57 6 10.2C6 12.54 7.95 15.64 12 19.34C16.05 15.64 18 12.54 18 10.2ZM12 2C16.2 2 20 5.22 20 10.2C20 13.52 17.33 17.45 12 22C6.67 17.45 4 13.52 4 10.2C4 5.22 7.8 2 12 2Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_463_5630">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  OpenInNew: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14260)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M19 19H5V5H12V3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V12H19V19ZM14 3V5H17.59L7.76 14.83L9.17 16.24L19 6.41V10H21V3H14Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14260">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14260)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M19 19H5V5H12V3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V12H19V19ZM14 3V5H17.59L7.76 14.83L9.17 16.24L19 6.41V10H21V3H14Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14260">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Schedule: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14261)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20ZM12.5 7H11V13L16.25 16.15L17 14.92L12.5 12.25V7Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14261">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14261)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20ZM12.5 7H11V13L16.25 16.15L17 14.92L12.5 12.25V7Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14261">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  ZoomIn: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14263)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14ZM10 7H9V9H7V10H9V12H10V10H12V9H10V7Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14263">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14263)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14ZM10 7H9V9H7V10H9V12H10V10H12V9H10V7Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14263">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  ZoomOut: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14264)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14ZM7 9H12V10H7V9Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14264">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ) : (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        preserveAspectRatio="none"
+      >
+        <g clipPath="url(#clip0_270_14264)">
+          <rect width="24" height="24" fill=""></rect>
+          <path
+            d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14ZM7 9H12V10H7V9Z"
+            fill={isDisabled ? '#afb0b7' : fillColor}
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_270_14264">
+            <rect width="24" height="24" fill=""></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    ),
+  Photo: (isOutlined, isDisabled, fillColor) =>
+    !isOutlined ? (
+      <svg
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative flex-grow-0 flex-shrink-0 w-6 h-6"
+        fill={isDisabled ? '#afb0b7' : fillColor}
+      >
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path d="M18 20H4V6h9V4H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-9h-2v9zm-7.79-3.17l-1.96-2.36L5.5 18h11l-3.54-4.71zM20 4V1h-2v3h-3c.01.01 0 2 0 2h3v2.99c.01.01 2 0 2 0V6h3V4h-3z" />
+      </svg>
+    ) : (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24px"
+        viewBox="0 0 24 24"
+        width="24px"
+        fill={isDisabled ? '#afb0b7' : fillColor}
+      >
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path d="M18 20H4V6h9V4H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-9h-2v9zm-7.79-3.17l-1.96-2.36L5.5 18h11l-3.54-4.71zM20 4V1h-2v3h-3c.01.01 0 2 0 2h3v2.99c.01.01 2 0 2 0V6h3V4h-3z" />
+      </svg>
+    ),
+}
+
+export type IconMapping = keyof typeof iconMapping
