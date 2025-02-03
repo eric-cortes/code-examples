@@ -8,7 +8,6 @@ A collection of code samples from various projects. This repository serves as a 
 ![Neos Project](img/neos.png)
 ![Neos Project](img/neos/1.png)
 ![Neos Project](img/neos/2.png)
-![Neos Project](img/neos/3.png)
 ![Neos Project](img/neos/4.png)
 ![Neos Project](img/neos/5.png)
 ![Neos Project](img/neos/6.png)
