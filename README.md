@@ -25,8 +25,6 @@ A collection of code samples from various projects. This repository serves as a 
 ![Binity Project](img/binity/1.png)
 ![Binity Project](img/binity/2.png)
 ![Binity Project](img/binity/4.png)
-![Binity Project](img/binity/5.png)
-![Binity Project](img/binity/6.png)
 
 ## Repository Structure
 
