@@ -10,6 +10,13 @@ A collection of code samples from various projects. This repository serves as a 
 - **Collaboration** – Working closely with designers, developers, and stakeholders.  
 - **Testing & Documentation** – Ensuring quality and maintainability.  
 
+## Repository Structure
+
+The repository contains examples covering different topics, including:  
+- **Frontend Development** (Nextjs, React, HTML, CSS, JavaScript, etc.)  
+- **Data Structures & Design**  
+- **Automation Scripts and Testing**  
+
 ## Neos  
 [Neos – A New Chapter for Future-Oriented City Cleaning](https://www.remondis-digital.com/news/detail/neos-neues-kapitel-fuer-die-zukunftsorientierte-stadtreinigung/)  
  
@@ -36,10 +43,3 @@ A collection of code samples from various projects. This repository serves as a 
 ![Binity Project](img/binity/1.png)
 ![Binity Project](img/binity/2.png)
 ![Binity Project](img/binity/4.png)
-
-## Repository Structure
-
-The repository contains examples covering different topics, including:  
-- **Frontend Development** (Nextjs, React, HTML, CSS, JavaScript, etc.)  
-- **Data Structures & Algorithms**  
-- **Automation Scripts**  
