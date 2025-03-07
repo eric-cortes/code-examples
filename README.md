@@ -32,13 +32,6 @@ A collection of code samples from various projects. This repository serves as a 
 ## Repository Structure
 
 The repository contains examples covering different topics, including:  
-- **Web Development** (HTML, CSS, JavaScript, React, etc.)  
-- **Backend Development** (Node.js, Python, Java, etc.)  
+- **Frontend Development** (Nextjs, React, HTML, CSS, JavaScript, etc.)  
 - **Data Structures & Algorithms**  
 - **Automation Scripts**  
-
-## How to Use
-
-1. Clone the repository:  
-   ```sh
-   git clone https://github.com/your-username/code-examples.git
