@@ -17,6 +17,9 @@ The repository contains examples covering different topics, including:
 - **Data Structures & Design**  
 - **Automation Scripts and Testing**  
 
+## Remondis UI Lib  
+[Remondis UI – A custom component library built with vite and storyboook](https://test-lib-ten.vercel.app/)  
+
 ## Neos  
 [Neos – A New Chapter for Future-Oriented City Cleaning](https://www.remondis-digital.com/news/detail/neos-neues-kapitel-fuer-die-zukunftsorientierte-stadtreinigung/)  
  
@@ -26,9 +29,6 @@ The repository contains examples covering different topics, including:
 ![Neos Project](img/neos/4.png)
 ![Neos Project](img/neos/5.png)
 ![Neos Project](img/neos/6.png)
-
-## Remondis UI Lib  
-[Remondis UI – A custom component library built with vite and storyboook](https://test-lib-ten.vercel.app/)  
  
 ## Leica Q  
 [Campaign with Virtue Worldwide - Preview:](https://ericcortes.de/leica/)  
