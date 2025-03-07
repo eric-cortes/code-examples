@@ -2,6 +2,14 @@
 
 A collection of code samples from various projects. This repository serves as a reference for different programming concepts, best practices, and solutions implemented across various projects.
 
+## Core Skills & Contributions  
+
+- **Interactive Web Applications** – Developing engaging, scalable platforms.  
+- **Emerging Technologies** – Researching and prototyping new tools.  
+- **End-to-End Development** – Contributing from concept to release.  
+- **Collaboration** – Working closely with designers, developers, and stakeholders.  
+- **Testing & Documentation** – Ensuring quality and maintainability.  
+
 ## Neos  
 [Neos – A New Chapter for Future-Oriented City Cleaning](https://www.remondis-digital.com/news/detail/neos-neues-kapitel-fuer-die-zukunftsorientierte-stadtreinigung/)  
  
