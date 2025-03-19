@@ -31,7 +31,7 @@ The repository contains examples covering different topics, including:
 ![Neos Project](img/neos/6.png)
  
 ## Leica Q  
-[Campaign with Virtue Worldwide - Preview:](https://ericcortes.de/leica/)  
+[Campaign with Virtue Worldwide - Preview:](https://leica-two.vercel.app/)  
  
 ![Leica Project](img/leica1.png)
 ![Leica Project](img/leica2.png)
