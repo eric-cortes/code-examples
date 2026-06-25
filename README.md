@@ -37,9 +37,12 @@ The repository contains examples covering different topics, including:
 ![Leica Project](img/leica2.png)
 ![Leica Project](img/leica3.png)
 
-## Binity  
-[Binity – A driver App](https://binity-test.vercel.app/routes)  
+## RawTherapy
+AI Psychotherapy Patient Simulator (backend + frontend workspace).
+Stack
 
-![Binity Project](img/binity/1.png)
-![Binity Project](img/binity/2.png)
-![Binity Project](img/binity/4.png)
+Fastify + TypeScript
+PostgreSQL (durable state)
+Redis (hot session cache + lock + idempotency)
+OpenAI adapter (+ mock fallback)  
+
