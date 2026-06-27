@@ -17,6 +17,17 @@ The repository contains examples covering different topics, including:
 - **Data Structures & Design**  
 - **Automation Scripts and Testing**  
 
+## RawTherapy
+AI Psychotherapy Patient Simulator (backend + frontend workspace).
+https://gitlab.com/ericcortes/therapist
+
+Stack
+
+Fastify + TypeScript
+PostgreSQL (durable state)
+Redis (hot session cache + lock + idempotency)
+OpenAI adapter (+ mock fallback)  
+
 ## Remondis UI Lib  
 [Remondis UI – A custom component library built with vite and storyboook](https://test-lib-ten.vercel.app/)  
 
@@ -37,12 +48,4 @@ The repository contains examples covering different topics, including:
 ![Leica Project](img/leica2.png)
 ![Leica Project](img/leica3.png)
 
-## RawTherapy
-AI Psychotherapy Patient Simulator (backend + frontend workspace).
-Stack
-
-Fastify + TypeScript
-PostgreSQL (durable state)
-Redis (hot session cache + lock + idempotency)
-OpenAI adapter (+ mock fallback)  
 
