@@ -26,21 +26,17 @@ export default function FullVideo({ srcOne, loop, onVideoEnd }: Props) {
     useEffect(() => {
         const video = videoRef.current!
         if (isInView) {
-            console.log('isInView')
             setIsMuted(false);
             video.play();
         } else if (!isInView) {
-            console.log('not isInView')
             setIsMuted(true);
             video.pause();
-
         }
     }, [isInView])
 
     useEffect(() => {
         const video = videoRef.current!;
         const handleVideoEnd = () => {
-            console.log('end');
             if (onVideoEnd) {
                 onVideoEnd();
             }
@@ -63,7 +59,6 @@ export default function FullVideo({ srcOne, loop, onVideoEnd }: Props) {
                 id="customVideo"
                 className="object-cover w-full h-auto lg:h-full"
                 preload="none"
-                //preload="auto"
                 muted={isMuted}
                 loop={loop !== undefined ? true : false}
                 playsInline
