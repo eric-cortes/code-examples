@@ -38,4 +38,4 @@ formatting and naming across a real, multi-feature application.
   component library (Vite + Storybook), each with matching tests and
   stories.
 - [`reina`](reina) — a few components from a personal (non-client)
-  Next.js project.
+  Next.js project
