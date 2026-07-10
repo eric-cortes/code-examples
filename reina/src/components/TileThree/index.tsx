@@ -30,11 +30,9 @@ export default function TileThree({ srcOne, srcTwo, srcThree, video, currentSlid
         if (video !== undefined) {
             const video = videoRef.current!
             if (isInView) {
-                console.log('isInView')
                 setIsMuted(false);
                 video.play();
             } else if (!isInView) {
-                console.log('not isInView')
                 setIsMuted(true);
                 video.pause();
             }
