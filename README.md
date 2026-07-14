@@ -1,9 +1,9 @@
 # Code Examples
 
-Selected, anonymized excerpts from production frontend projects. These
-files are not meant to run as complete standalone applications — they're
-here to show how I structure frontend code, model data, separate
-responsibilities, and keep implementations readable and maintainable.
+Selected, anonymized excerpts from production projects. These files are
+not meant to run as complete standalone applications — they're here to
+show how I structure code, model data, separate responsibilities, and
+keep implementations readable and maintainable.
 
 Business-specific names, endpoints, and other identifying details have
 been changed or removed. Each folder has its own `README.md` explaining
@@ -44,3 +44,7 @@ real, multi-feature application.
   stories.
 - [`reina`](reina) — a few components from Reina Eterna, an interactive
   documentary (Next.js) built for Taller de Historias en Imágenes
+- [`rawtherapy`](rawtherapy) — an AI psychotherapy patient simulator.
+  Backend/systems-focused (Fastify, Postgres, Redis session
+  locking/idempotency, an LLM adapter with a mock fallback), in contrast
+  to the frontend work above.
