@@ -3,17 +3,14 @@
 ## Context
 
 An AI psychotherapy patient simulator for therapist training (Fastify +
-TypeScript, Postgres, Redis, an LLM adapter). Five standalone samples from
-the backend, picked independently rather than as one connected
+TypeScript, Postgres, Redis, an LLM adapter). A few standalone samples
+from the backend, picked independently rather than as one connected
 walkthrough — some of them reference modules that aren't included here.
 
 ## What's here
 
 - `engine/rule-engine.ts` — pure state-transition logic: therapist message
   → applied rules → next trust/stress/openness/mood.
-- `engine/prompt-builder.ts` — assembles a patient's profile, dynamic
-  state, and behavior rules into an English/German system prompt tuned for
-  spoken-style (TTS) output.
 - `llm/adapter.ts` — a small `LlmAdapter` interface with an OpenAI
   implementation (streaming + non-streaming, `AbortController` timeout)
   and a `MockLlmAdapter` used automatically when no API key is
