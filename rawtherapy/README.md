@@ -21,6 +21,14 @@ walkthrough — some of them reference modules that aren't included here.
   lock, idempotency check, safety analysis (prompt-injection /
   high-risk-language detection), rule engine, prompt build, LLM call,
   persistence.
+- `frontend/components/ChatWindow.tsx`, `MessageBubble.tsx`,
+  `MessageInput.tsx` — the chat UI: message list, a composer with
+  push-to-record voice input and a keyboard shortcut for it, and
+  status-aware message bubbles.
+- `frontend/hooks/usePatientSpeech.ts` — plays streamed PCM
+  text-to-speech audio via the Web Audio API as it arrives, with a
+  prebuffer to avoid choppy playback and a browser
+  `speechSynthesis` fallback if streaming fails.
 
 ## Anonymization
 

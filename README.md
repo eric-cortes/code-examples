@@ -44,7 +44,7 @@ real, multi-feature application.
   stories.
 - [`reina`](reina) — a few components from Reina Eterna, an interactive
   documentary (Next.js) built for Taller de Historias en Imágenes
-- [`rawtherapy`](rawtherapy) — an AI psychotherapy patient simulator.
-  Backend/systems-focused (Fastify, Postgres, Redis session
-  locking/idempotency, an LLM adapter with a mock fallback), in contrast
-  to the frontend work above.
+- [`rawtherapy`](rawtherapy) — an AI psychotherapy patient simulator:
+  backend (Fastify, Postgres, Redis session locking/idempotency, an LLM
+  adapter with a mock fallback) plus a few React frontend pieces (chat
+  UI, streamed text-to-speech playback).
