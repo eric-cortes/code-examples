@@ -1,9 +1,9 @@
-# Reina Eterna (personal project)
+# Reina Eterna
 
 ## Context
 
-A personal Next.js project (a scrollable, video/image slideshow site) — not
-client work, so nothing here is anonymized. This folder keeps a few
+An interactive documentary (a scrollable, video/image slideshow site) built
+in Next.js for Taller de Historias en Imágenes. This folder keeps a few
 representative components rather than the full app.
 
 ## What's here

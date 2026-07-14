@@ -1,0 +1,53 @@
+# Amplify ignore file - reduces build artifact size
+# Large video files
+public/video.mp4
+
+# Large SVG files that can be optimized
+public/img/order_phone.svg
+
+# Development files
+e2e/
+docker/
+docker-compose.yml
+*.Dockerfile
+terraform/
+
+# Documentation
+*.md
+CODEOWNERS
+docs/
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+vitest.config.ts
+
+# Git files
+.git/
+.gitignore
+.github/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build cache (already excluded but just to be safe)
+.next/cache/
+node_modules/
+
+# Auth state (sensitive, dev-only)
+.auth/
+
+# Storybook build output
+storybook-static/
+
+# Logs and coverage
+*.log
+coverage/
+
+# Lefthook
+lefthook.yml

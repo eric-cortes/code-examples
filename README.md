@@ -14,28 +14,33 @@ decision behind it.
 
 React/Next.js component structure, TypeScript modeling, API integration
 (both hand-written and generated clients), custom hooks and state
-management, error/loading states, component testing, and consistent
-formatting and naming across a real, multi-feature application.
+management, error/loading states, component testing, CI/CD (AWS
+Amplify + GitHub Actions), and consistent formatting and naming across a
+real, multi-feature application.
 
 ## Where to look
 
-- [`examples/feature-structure`](examples/feature-structure) — a booking/scheduling
+- [`feature-structure`](feature-structure) — a booking/scheduling
   feature: top-level composition, list/row/edit-form pattern applied
   consistently across entities.
-- [`examples/api-integration`](examples/api-integration) — the same feature's data
+- [`api-integration`](api-integration) — the same feature's data
   layer shown twice: hand-written `fetch`/SWR vs. a generated OpenAPI
   client, plus the backing Next.js route handlers and auth config.
-- [`examples/maps-integration`](examples/maps-integration) — Google Maps integration
+- [`maps-integration`](maps-integration) — Google Maps integration
   for the same app (markers, routes, polylines).
-- [`examples/ui-components`](examples/ui-components) — small standalone UI
+- [`ui-components`](ui-components) — small standalone UI
   primitives.
-- [`examples/state-management`](examples/state-management) — a Zustand store, a
+- [`state-management`](state-management) — a Zustand store, a
   data-fetching provider, and shared utility hooks/helpers.
-- [`examples/legacy-campaign-site`](examples/legacy-campaign-site) — two
+- [`devops`](devops) — CI/CD for the same app: an AWS
+  Amplify build spec and a GitHub Actions pipeline that deploys per-PR
+  preview environments, gates them on E2E tests, and tears them down
+  afterwards.
+- [`legacy-campaign-site`](legacy-campaign-site) — two
   representative files from an older vanilla-JS marketing site (see
   `leica/` for the full source).
 - [`ui-system`](ui-system) — a handful of components from a shared
   component library (Vite + Storybook), each with matching tests and
   stories.
-- [`reina`](reina) — a few components from a personal (non-client)
-  Next.js project
+- [`reina`](reina) — a few components from Reina Eterna, an interactive
+  documentary (Next.js) built for Taller de Historias en Imágenes
