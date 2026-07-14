@@ -1,0 +1,240 @@
+name: Amplify Deployment
+
+concurrency:
+    group: amplify-deployment-${{ github.head_ref || github.ref_name }}
+    cancel-in-progress: false
+
+on:
+    workflow_call:
+        inputs:
+            branch_name:
+                required: false
+                type: string
+                default: ${{ github.head_ref || github.ref_name }}
+        outputs:
+            amplify-url:
+                description: "The primary Amplify deployment URL"
+                value: ${{ jobs.deploy.outputs.amplify-url }}
+            all-urls:
+                description: "All available deployment URLs"
+                value: ${{ jobs.deploy.outputs.all-urls }}
+            deployment-ready:
+                description: "Whether the deployment is ready"
+                value: ${{ jobs.deploy.outputs.deployment-ready }}
+            branch-created:
+                description: "Whether a new branch was created"
+                value: ${{ jobs.deploy.outputs.branch-created }}
+
+jobs:
+    deploy:
+        name: Deploy to Amplify
+        runs-on: ubuntu-latest
+        environment:
+            name: amplify
+        outputs:
+            amplify-url: ${{ steps.get-url.outputs.url }}
+            all-urls: ${{ steps.get-url.outputs.all-urls }}
+            deployment-ready: ${{ steps.wait-deployment.outputs.deployment-ready }}
+            branch-created: ${{ steps.create-branch.outputs.branch-created }}
+        permissions:
+            id-token: write
+            contents: read
+        steps:
+            - name: Configure AWS credentials
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  aws-region: ${{ secrets.AWS_REGION != '' && secrets.AWS_REGION || 'eu-central-1' }}
+
+            - name: Clean up stuck Amplify jobs and disable auto-build
+              run: |
+                  BRANCH_NAME="${{ inputs.branch_name }}"
+                  APP_ID="${{ secrets.AMPLIFY_APP_ID }}"
+
+                  echo "Checking for stuck jobs on branch $BRANCH_NAME..."
+
+                  if aws amplify get-branch --app-id $APP_ID --branch-name $BRANCH_NAME 2>/dev/null; then
+                    BRANCH_INFO=$(aws amplify get-branch --app-id $APP_ID --branch-name $BRANCH_NAME)
+                    ACTIVE_JOB_ID=$(echo "$BRANCH_INFO" | jq -r '.branch.activeJobId')
+                    AUTO_BUILD_ENABLED=$(echo "$BRANCH_INFO" | jq -r '.branch.enableAutoBuild')
+
+                    if [ "$AUTO_BUILD_ENABLED" == "true" ]; then
+                      aws amplify update-branch --app-id $APP_ID --branch-name $BRANCH_NAME --no-enable-auto-build
+                    fi
+                  fi
+
+            - name: Create Amplify Branch
+              id: create-branch
+              run: |
+                  BRANCH_NAME="${{ inputs.branch_name }}"
+                  APP_ID="${{ secrets.AMPLIFY_APP_ID }}"
+
+                  if aws amplify get-branch --app-id $APP_ID --branch-name $BRANCH_NAME 2>/dev/null; then
+                    echo "Branch $BRANCH_NAME already exists"
+                    echo "branch-created=false" >> $GITHUB_OUTPUT
+                  else
+                    aws amplify create-branch \
+                      --app-id $APP_ID \
+                      --branch-name $BRANCH_NAME \
+                      --description "Preview branch from GitHub Actions" \
+                      --no-enable-auto-build
+                    echo "branch-created=true" >> $GITHUB_OUTPUT
+                  fi
+
+                  JOB_ID=$(aws amplify start-job \
+                    --app-id $APP_ID \
+                    --branch-name $BRANCH_NAME \
+                    --job-type RELEASE \
+                    --query 'jobSummary.jobId' \
+                    --output text)
+
+                  echo "job-id=$JOB_ID" >> $GITHUB_OUTPUT
+
+            - name: Associate Branch with Custom Domains
+              run: |
+                  APP_ID="${{ secrets.AMPLIFY_APP_ID }}"
+                  BRANCH_NAME="${{ inputs.branch_name }}"
+                  AWS_REGION="${{ secrets.AWS_REGION != '' && secrets.AWS_REGION || 'eu-central-1' }}"
+
+                  # Define all domains
+                  DOMAINS=("app.example.com" "app.example.dev" "app.example.io")
+
+                  # Get all existing branches
+                  ALL_BRANCHES=$(aws amplify list-branches \
+                    --app-id "$APP_ID" \
+                    --region "$AWS_REGION" \
+                    --query 'branches[].branchName' \
+                    --output json)
+
+                  echo "All branches: $ALL_BRANCHES"
+
+                  # Filter out main
+                  FILTERED_BRANCHES=$(echo "$ALL_BRANCHES" | jq -r '[.[] | select(. != "main")]')
+
+                  sanitize_branch_to_prefix() {
+                    local branch="$1"
+                    # lowercase
+                    local prefix=$(echo "$branch" | tr '[:upper:]' '[:lower:]')
+                    # replace invalid chars with -
+                    prefix=$(echo "$prefix" | sed 's/[^a-z0-9-]/-/g')
+                    # collapse multiple -
+                    prefix=$(echo "$prefix" | sed 's/-\+/-/g')
+                    # trim leading/trailing -
+                    prefix=$(echo "$prefix" | sed 's/^-//;s/-$//')
+                    # truncate to 63 chars
+                    prefix=$(echo "$prefix" | cut -c1-63)
+                    # trim trailing - after truncation
+                    prefix=$(echo "$prefix" | sed 's/-$//')
+                    # fallback if empty
+                    if [ -z "$prefix" ]; then
+                      prefix="branch-${#branch}"
+                    fi
+                    echo "$prefix"
+                  }
+
+                  SUBDOMAIN_SETTINGS="[]"
+                  for branch in $(echo "$FILTERED_BRANCHES" | jq -r '.[]'); do
+                    prefix=$(sanitize_branch_to_prefix "$branch")
+                    SUBDOMAIN_SETTINGS=$(echo "$SUBDOMAIN_SETTINGS" | jq --arg prefix "$prefix" --arg branch "$branch" '. + [{"prefix": $prefix, "branchName": $branch}]')
+                  done
+
+                  echo "Subdomain settings: $SUBDOMAIN_SETTINGS"
+
+                  # Process each domain
+                  for DOMAIN_NAME in "${DOMAINS[@]}"; do
+                    echo "Processing domain: $DOMAIN_NAME"
+
+                    if aws amplify get-domain-association \
+                      --app-id "$APP_ID" \
+                      --domain-name "$DOMAIN_NAME" \
+                      --region "$AWS_REGION" >/dev/null 2>&1; then
+                      echo "Domain association exists for $DOMAIN_NAME, updating..."
+                      aws amplify update-domain-association \
+                        --app-id "$APP_ID" \
+                        --domain-name "$DOMAIN_NAME" \
+                        --sub-domain-settings "$SUBDOMAIN_SETTINGS" \
+                        --region "$AWS_REGION"
+                    else
+                      echo "Domain association does not exist for $DOMAIN_NAME, creating..."
+                      aws amplify create-domain-association \
+                        --app-id "$APP_ID" \
+                        --domain-name "$DOMAIN_NAME" \
+                        --sub-domain-settings "$SUBDOMAIN_SETTINGS" \
+                        --region "$AWS_REGION"
+                    fi
+
+                    echo "✅ All branches mapped to $DOMAIN_NAME"
+                  done
+
+                  echo "🎉 All branches are now available on all domains:"
+                  for DOMAIN_NAME in "${DOMAINS[@]}"; do
+                    echo "  - https://$(sanitize_branch_to_prefix "$BRANCH_NAME").$DOMAIN_NAME"
+                  done
+
+            - name: Wait for Amplify Deployment
+              id: wait-deployment
+              run: |
+                  APP_ID="${{ secrets.AMPLIFY_APP_ID }}"
+                  BRANCH_NAME="${{ inputs.branch_name }}"
+                  JOB_ID="${{ steps.create-branch.outputs.job-id }}"
+                  AWS_REGION="${{ secrets.AWS_REGION != '' && secrets.AWS_REGION || 'eu-central-1' }}"
+                  TIMEOUT=1800
+                  ELAPSED=0
+                  DEPLOYMENT_READY=false
+
+                  while [ $ELAPSED -lt $TIMEOUT ]; do
+                    STATUS=$(aws amplify get-job \
+                      --app-id "$APP_ID" \
+                      --branch-name "$BRANCH_NAME" \
+                      --job-id "$JOB_ID" \
+                      --region "$AWS_REGION" \
+                      --query 'job.summary.status' \
+                      --output text)
+
+                    if [ "$STATUS" == "SUCCEED" ]; then
+                      DEPLOYMENT_READY=true
+                      break
+                    elif [ "$STATUS" == "FAILED" ] || [ "$STATUS" == "CANCELLED" ]; then
+                      exit 1
+                    fi
+
+                    sleep 30
+                    ELAPSED=$((ELAPSED + 30))
+                  done
+
+                  if [ "$DEPLOYMENT_READY" != "true" ]; then
+                    exit 1
+                  fi
+
+                  echo "deployment-ready=true" >> $GITHUB_OUTPUT
+
+            - name: Get Amplify URLs
+              id: get-url
+              run: |
+                  BRANCH_NAME="${{ inputs.branch_name }}"
+
+                  sanitize_branch_to_prefix() {
+                    local branch="$1"
+                    local prefix=$(echo "$branch" | tr '[:upper:]' '[:lower:]')
+                    prefix=$(echo "$prefix" | sed 's/[^a-z0-9-]/-/g')
+                    prefix=$(echo "$prefix" | sed 's/-\+/-/g')
+                    prefix=$(echo "$prefix" | sed 's/^-//;s/-$//')
+                    prefix=$(echo "$prefix" | cut -c1-63)
+                    prefix=$(echo "$prefix" | sed 's/-$//')
+                    if [ -z "$prefix" ]; then
+                      prefix="branch-${#branch}"
+                    fi
+                    echo "$prefix"
+                  }
+
+                  AMPLIFY_BRANCH_NAME=$(sanitize_branch_to_prefix "$BRANCH_NAME")
+
+                          PRIMARY_URL="https://${AMPLIFY_BRANCH_NAME}.app.example.com"
+                          ALL_URLS="https://${AMPLIFY_BRANCH_NAME}.app.example.dev,https://${AMPLIFY_BRANCH_NAME}.app.example.io"
+
+                  echo "url=$PRIMARY_URL" >> $GITHUB_OUTPUT
+                  echo "all-urls=$ALL_URLS" >> $GITHUB_OUTPUT
+
+                  echo "Primary URL: $PRIMARY_URL"
+                  echo "All URLs: $ALL_URLS"

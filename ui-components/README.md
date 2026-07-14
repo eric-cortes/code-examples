@@ -17,7 +17,7 @@ dependency on the app's data layer.
 
 Nothing omitted — this is the complete set of standalone UI components from
 the original project; the rest of the app's UI came from a shared design
-system (see [`../../ui-system`](../../ui-system)).
+system (see [`../ui-system`](../ui-system)).
 
 ## Design decision
 

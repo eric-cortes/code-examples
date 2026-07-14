@@ -1,0 +1,33 @@
+version: 2
+frontend:
+    phases:
+        preBuild:
+            commands:
+                - corepack enable
+                - corepack prepare pnpm@latest --activate
+                - pnpm install --frozen-lockfile --ignore-scripts
+                - export NODE_OPTIONS="--max-old-space-size=5632"
+                - export GENERATE_SOURCEMAP=false
+                - env | grep -E '^(GOOGLE_MAPS_KEY|GOOGLE_MAPS_CLIENT_KEY)' >> .env.production
+        build:
+            commands:
+                - pnpm next build --turbo
+                - find .next -name "*.map" -type f -delete
+                - find .next/standalone -name "*.md" -type f -delete
+                - find .next/standalone -name "README*" -type f -delete
+                - find .next/standalone/node_modules -name "*.md" -type f -delete 2>/dev/null || true
+                - find .next/standalone/node_modules -name "*.map" -type f -delete 2>/dev/null || true
+                - find .next/standalone/node_modules -name "LICENSE*" -type f -delete 2>/dev/null || true
+                - find .next/standalone/node_modules -name "CHANGELOG*" -type f -delete 2>/dev/null || true
+                - find .next/standalone/node_modules -name "README*" -type f -delete 2>/dev/null || true
+    artifacts:
+        baseDirectory: .next
+        files:
+            - "**/*"
+
+    # Caching disabled since Amplify has no cache access
+    # cache:
+    #     paths:
+    #         - .pnpm-store/**/*
+    #         - node_modules/**/*
+    #         - .next/cache/**/*
