@@ -6,11 +6,11 @@
   <title>ILLUMINATED - Leica Q</title>
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="7 Countries. 7 Photographers. 7 Months. One Camera - The Leica Q.">
+  <meta name="description" content="3 Countries. 3 Photographers. 3 Months. One Camera - The Leica Q.">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <meta property="og:title" content="ILLUMINATED - Leica Q"/>
-  <meta property="og:description" content="7 Countries. 7 Photographers. 7 Months. One Camera - The Leica Q."/>
+  <meta property="og:description" content="3 Countries. 3 Photographers. 3 Months. One Camera - The Leica Q."/>
   <meta property="og:image" content="assets/img/main/og-image.jpg"/>
 
   <link href="assets/css/style.min.css" rel="stylesheet">
@@ -304,18 +304,6 @@
         anchor: new google.maps.Point(20, 20),
       }
 
-      var singaporeMarker = new google.maps.Marker({
-        position: new google.maps.LatLng(1.290, 103.852),
-        map: map,
-        icon: activeIconImage
-      })
-
-      var shanghaiMarker = new google.maps.Marker({
-        position: new google.maps.LatLng(31.230, 121.474),
-        map: map,
-        icon: activeIconImage
-      })
-
       var seoulMarker = new google.maps.Marker({
         position: new google.maps.LatLng(37.930, 127.090),
         map: map,
@@ -328,32 +316,12 @@
         icon: activeIconImage
       })
 
-      var milanMarker = new google.maps.Marker({
-        position: new google.maps.LatLng(45.464, 9.191),
-        map: map,
-        icon: activeIconImage
-      })
-
-      var nyMarker = new google.maps.Marker({
-        position: new google.maps.LatLng(40.730, -73.935),
-        map: map,
-        icon: activeIconImage
-      })
-
       sydneyMarker.addListener('click', function () {
         window.location.href = window.location.origin + '/sydney';
       })
 
-      singaporeMarker.addListener('click', function () {
-        window.location.href = window.location.origin + '/singapore';
-      })
-
-      shanghaiMarker.addListener('click', function () {
-        window.location.href = window.location.origin + '/shanghai';
-      })
-
-      nyMarker.addListener('click', function () {
-        window.location.href = window.location.origin + '/newyork';
+      seoulMarker.addListener('click', function () {
+        window.location.href = window.location.origin + '/seoul';
       })
 
       berlinMarker.addListener('click', function () {
@@ -382,23 +350,6 @@
         sydneyMarker.setAnimation(google.maps.Animation.BOUNCE)
       })
 
-      google.maps.event.addListener(nyMarker, 'mouseover', function () {
-        $('.marker-ny').addClass('active');
-        nyMarker.setAnimation(null)
-      });
-      google.maps.event.addListener(nyMarker, 'mouseout', function () {
-        $('.marker-ny').removeClass('active');
-        nyMarker.setAnimation(google.maps.Animation.BOUNCE)
-      });
-
-      $('.marker-ny').mouseenter(function () {
-        nyMarker.setAnimation(null)
-      })
-
-      $('.marker-ny').mouseleave(function () {
-        nyMarker.setAnimation(google.maps.Animation.BOUNCE)
-      })
-
       google.maps.event.addListener(seoulMarker, 'mouseover', function () {
         $('.marker-seoul').addClass('active');
         seoulMarker.setAnimation(null)
@@ -414,40 +365,6 @@
 
       $('.marker-seoul').mouseleave(function () {
         seoulMarker.setAnimation(google.maps.Animation.BOUNCE)
-      })
-
-      google.maps.event.addListener(shanghaiMarker, 'mouseover', function () {
-        $('.marker-shanghai').addClass('active');
-        shanghaiMarker.setAnimation(null)
-      });
-      google.maps.event.addListener(shanghaiMarker, 'mouseout', function () {
-        $('.marker-shanghai').removeClass('active');
-        shanghaiMarker.setAnimation(google.maps.Animation.BOUNCE)
-      });
-
-      $('.marker-shanghai').mouseenter(function () {
-        shanghaiMarker.setAnimation(null)
-      })
-
-      $('.marker-shanghai').mouseleave(function () {
-        shanghaiMarker.setAnimation(google.maps.Animation.BOUNCE)
-      })
-
-      google.maps.event.addListener(singaporeMarker, 'mouseover', function () {
-        $('.marker-singapore').addClass('active');
-        singaporeMarker.setAnimation(null)
-      });
-      google.maps.event.addListener(singaporeMarker, 'mouseout', function () {
-        $('.marker-singapore').removeClass('active');
-        singaporeMarker.setAnimation(google.maps.Animation.BOUNCE)
-      });
-
-      $('.marker-singapore').mouseenter(function () {
-        singaporeMarker.setAnimation(null)
-      })
-
-      $('.marker-singapore').mouseleave(function () {
-        singaporeMarker.setAnimation(google.maps.Animation.BOUNCE)
       })
 
       google.maps.event.addListener(berlinMarker, 'mouseover', function () {
@@ -467,32 +384,8 @@
         berlinMarker.setAnimation(google.maps.Animation.BOUNCE)
       })
 
-      google.maps.event.addListener(milanMarker, 'mouseover', function () {
-        $('.marker-milan').addClass('active');
-        milanMarker.setAnimation(null)
-      });
-      google.maps.event.addListener(milanMarker, 'mouseout', function () {
-        $('.marker-milan').removeClass('active');
-        milanMarker.setAnimation(google.maps.Animation.BOUNCE)
-      });
-
-      $('.marker-milan').mouseenter(function () {
-        milanMarker.setAnimation(null)
-      })
-
-      $('.marker-milan').mouseleave(function () {
-        milanMarker.setAnimation(google.maps.Animation.BOUNCE)
-      })
-
-      google.maps.event.addListener(shanghaiMarker, 'mouseover', function () {
-        $('.marker-shanghai').addClass('active');
-      });
-      google.maps.event.addListener(shanghaiMarker, 'mouseout', function () {
-        $('.marker-shanghai').removeClass('active');
-      });
-
       google.maps.event.addListener(map, 'idle', function() {
-        animateMarkers(sydneyMarker, singaporeMarker, nyMarker, berlinMarker, milanMarker, seoulMarker, shanghaiMarker)
+        animateMarkers(sydneyMarker, berlinMarker, seoulMarker)
       });
     }
 
@@ -516,14 +409,10 @@
       }
     }
 
-    function animateMarkers(sydneyMarker, singaporeMarker, nyMarker, berlinMarker, milanMarker, seoulMarker, shanghaiMarker) {
+    function animateMarkers(sydneyMarker, berlinMarker, seoulMarker) {
       sydneyMarker.setAnimation(google.maps.Animation.BOUNCE)
-      singaporeMarker.setAnimation(google.maps.Animation.BOUNCE)
-      nyMarker.setAnimation(google.maps.Animation.BOUNCE)
       berlinMarker.setAnimation(google.maps.Animation.BOUNCE)
-      milanMarker.setAnimation(google.maps.Animation.BOUNCE)
       seoulMarker.setAnimation(google.maps.Animation.BOUNCE)
-      shanghaiMarker.setAnimation(google.maps.Animation.BOUNCE)
     }
   </script>
 </head>
@@ -563,7 +452,7 @@
             <div class="bg-gradient"></div>
             <div class="headline">
               <h1>ILLUMINATED</h1>
-              <p>7 countries. 7 photographers. 7 months. </br>One camera - The Leica Q.</p>
+              <p>3 countries. 3 photographers. 3 months. </br>One camera - The Leica Q.</p>
               <div class="sound-info">
                 <p>Please turn on the sound for the full experience.</p>
               </div>
@@ -613,14 +502,6 @@
             <button class="overlay-close">YES</button>
           </div>
           <div class="grid" id="leicamap"></div>
-          <a href="/leica/newyork" class="marker marker-ny">
-            <p class="headline">New York</p>
-            <p class="description">Hosanna Swee on Heritage</p>
-          </a>
-          <a href="/leica/milan" class="marker marker-milan">
-            <p class="headline">Milan</p>
-            <p class="description">NK Chu on nature in Milan</p>
-          </a>
           <a href="/leica/berlin" class="marker marker-berlin">
             <p class="headline">Berlin</p>
             <p class="description">YoungJun Koo reports from Berlin</p>
@@ -628,14 +509,6 @@
           <a href="/leica/seoul" class="marker marker-seoul">
             <p class="headline">Seoul</p>
             <p class="description">Vanessa Berlanda on craft</p>
-          </a>
-          <a href="/leica/shanghai" class="marker marker-shanghai">
-            <p class="headline">Shanghai</p>
-            <p class="description">Miranda Barnes on low light</p>
-          </a>
-          <a href="/leica/singapore" class="marker marker-singapore">
-            <p class="headline">Singapore</p>
-            <p class="description">Jesse Marlow on a journey of Discovery</p>
           </a>
           <a href="/leica/sydney" class="marker marker-sydney">
             <p class="headline">Sydney</p>
@@ -655,28 +528,6 @@
             </a>
           </div>
           <div class="square">
-            <a href="/leica/newyork">
-              <div class="square-background"></div>
-              <div class="square-inner">
-                <h4>New York</h4>
-                <span>
-                  <p>Hosanna Swee on Heritage</p>
-                </span>
-              </div>
-            </a>
-          </div>
-          <div class="square">
-            <a href="/leica/singapore">
-              <div class="square-background"></div>
-              <div class="square-inner">
-                <h4>Singapore</h4>
-                <span>
-                  <p>Jesse Marlow on a journey of Discovery</p>
-                </span>
-              </div>
-            </a>
-          </div>
-          <div class="square">
             <a href="/leica/sydney">
               <div class="square-background"></div>
               <div class="square-inner">
@@ -688,34 +539,12 @@
             </a>
           </div>
           <div class="square">
-            <a href="/leica/milan">
-              <div class="square-background"></div>
-              <div class="square-inner">
-                <h4>Milan</h4>
-                <span>
-                  <p>NK Chu on nature in Milan</p>
-                </span>
-              </div>
-            </a>
-          </div>
-          <div class="square">
             <a href="/leica/seoul">
               <div class="square-background"></div>
               <div class="square-inner">
                 <h4>Seoul</h4>
                 <span>
                   <p>Vanessa Berlanda on craft</p>
-                </span>
-              </div>
-            </a>
-          </div>
-          <div class="square">
-            <a href="/leica/shanghai">
-              <div class="square-background"></div>
-              <div class="square-inner">
-                <h4>Shanghai</h4>
-                <span>
-                  <p>Miranda Barnes on low light</p>
                 </span>
               </div>
             </a>
