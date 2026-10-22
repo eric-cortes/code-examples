@@ -15,15 +15,15 @@ import { ColorProps } from "../Text/types";
 import type { InputProps } from "./types";
 
 const inputVariants = cva(
-	"w-full rounded-lg border p-2 h-[32px] text-base text-Secondary/Default focus:ring-transparent font-primary font-light placeholder-[#9FA1A7] focus:outline-none shadow-inner",
+	"w-full rounded-xl border-[0.5px] p-2 h-[32px] text-[13px] font-primary font-light focus:outline-none bg-[rgba(24,28,36,0.62)] bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_45%,rgba(0,0,0,0.12)_100%)] text-[#D5D9E0] placeholder:text-[#7F8898] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.14),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_4px_14px_rgba(0,0,0,0.3)] backdrop-blur-xl backdrop-saturate-150",
 	{
 		variants: {
 			error: {
-				true: "border-Error/Dark focus:border-Error/Dark hover:border-Error/Dark",
-				false: "border-Primary/Dark hover:border-Primary/Dark focus:border-Highlight-1/Dark",
+				true: "border-[#EF4444] bg-[rgba(48,22,26,0.62)] hover:border-[#EF4444] focus:border-[#EF4444] ring-2 ring-[#EF4444]/60 focus:ring-2 focus:ring-[#EF4444] focus:shadow-[inset_0_0.5px_0_rgba(255,255,255,0.14),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_0_12px_rgba(239,68,68,0.4),0_4px_14px_rgba(0,0,0,0.3)]",
+				false: "border-white/[0.08] hover:border-white/[0.2] focus:border-[#F97316] focus:ring-2 focus:ring-[#F97316] focus:shadow-[inset_0_0.5px_0_rgba(255,255,255,0.14),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_0_12px_rgba(249,115,22,0.45),0_4px_14px_rgba(0,0,0,0.3)]",
 			},
 			disabled: {
-				true: "cursor-not-allowed bg-[#FAFAFA] !text-Secondary/Placeholder",
+				true: "cursor-not-allowed bg-none opacity-40 !text-[#7F8898] shadow-none hover:border-white/[0.08]",
 				false: "",
 			},
 			inline: {
@@ -39,7 +39,7 @@ const inputVariants = cva(
 			{
 				disabled: true,
 				inline: false,
-				className: "hover:border-Primary/Medium",
+				className: "hover:border-white/[0.08]",
 			},
 			{
 				disabled: true,

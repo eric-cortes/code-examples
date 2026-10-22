@@ -11,21 +11,20 @@ import { Spinner } from "../Spinner";
 import type { ButtonProps } from "./types";
 
 const buttonVariants = cva(
-	"relative inline-flex items-center justify-center font-primary font-normal text-base leading-[30px] border-brand-gray border rounded-lg transition duration-100 ease-out hover:ease-in scale-100 active:scale-[98%]",
+	"relative inline-flex items-center justify-center font-primary font-normal text-[13px] leading-5 border-[0.5px] rounded-full backdrop-blur-xl backdrop-saturate-150 [transition:background-color_300ms_cubic-bezier(0.22,1,0.36,1),box-shadow_300ms_cubic-bezier(0.22,1,0.36,1),border-color_300ms_cubic-bezier(0.22,1,0.36,1),color_300ms_cubic-bezier(0.22,1,0.36,1),transform_220ms_cubic-bezier(0.22,1,0.36,1)] motion-reduce:[transition:none] after:content-[''] after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[rgba(0,0,0,0.05)] after:opacity-0 after:[transition:opacity_300ms_cubic-bezier(0.22,1,0.36,1)] hover:after:opacity-100 disabled:after:hidden data-[disabled]:after:hidden aria-disabled:after:hidden scale-100 active:scale-[97%] active:[transition-duration:0ms] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F97316] focus-visible:shadow-[inset_0_0.5px_0_rgba(255,255,255,0.18),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_0_12px_rgba(249,115,22,0.45),0_8px_24px_rgba(0,0,0,0.35)]",
 	{
 		variants: {
 			variant: {
-				primary: "bg-Highlight-1/DarkAccessible text-White border-black/15 hover:bg-Highlight-1/Dark",
-				secondary:
-					"bg-Highlight-1/Light border-Highlight-1/Medium/20 text-Highlight-1/DarkAccessible hover:bg-Highlight-1/Medium hover:border-Highlight-1/Dark/20",
-				danger: "bg-Highlight-2/Light border-Highlight-2/Medium/25 hover:bg-Highlight-2/Medium text-Error/Dark hover:text-red-700 hover:border-Error/Dark",
-				info: "bg-white text-Secondary/Default border-black/10 hover:bg-Primary/Light hover:border-black/15",
-				link: "border-none bg-transparent text-Highlight-1/DarkAccessible hover:bg-Highlight-1/Light",
-				ghost: "border-none bg-transparent hover:bg-Primary/Light",
-				outline: "bg-white border-Secondary/Default hover:bg-Primary/Light hover:border-Secondary/Default",
+				primary: "bg-[rgba(24,28,36,0.62)] bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_45%,rgba(0,0,0,0.12)_100%)] hover:bg-[rgba(19,22,29,0.68)] text-[#D5D9E0] border-white/[0.08] ring-2 ring-[#F97316] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.18),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_0_12px_rgba(249,115,22,0.45),0_8px_24px_rgba(0,0,0,0.35)]",
+				secondary: "bg-[rgba(24,28,36,0.62)] bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_45%,rgba(0,0,0,0.12)_100%)] hover:bg-[rgba(19,22,29,0.68)] text-[#D5D9E0] border-white/[0.08] ring-2 ring-[#22C55E] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.18),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_0_12px_rgba(34,197,94,0.45),0_8px_24px_rgba(0,0,0,0.35)]",
+				danger: "bg-[rgba(24,28,36,0.62)] bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_45%,rgba(0,0,0,0.12)_100%)] hover:bg-[rgba(19,22,29,0.68)] text-[#D5D9E0] border-white/[0.08] ring-2 ring-[#EF4444] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.18),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_0_12px_rgba(239,68,68,0.4),0_8px_24px_rgba(0,0,0,0.35)]",
+				info: "bg-[rgba(24,28,36,0.62)] bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_45%,rgba(0,0,0,0.12)_100%)] hover:bg-[rgba(19,22,29,0.68)] text-[#D5D9E0] border-white/[0.08] ring-2 ring-[#3B82F6] hover:border-white/[0.2] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.18),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_0_12px_rgba(59,130,246,0.45),0_8px_24px_rgba(0,0,0,0.35)]",
+				link: "bg-[rgba(24,28,36,0.62)] bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_45%,rgba(0,0,0,0.12)_100%)] hover:bg-[rgba(19,22,29,0.68)] text-[#D5D9E0] border-white/[0.08] hover:border-white/[0.2] underline-offset-4 hover:underline shadow-[inset_0_0.5px_0_rgba(255,255,255,0.18),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_8px_24px_rgba(0,0,0,0.35)]",
+				ghost: "border-transparent bg-transparent text-[#D5D9E0] shadow-none hover:bg-black/5",
+				outline: "bg-[rgba(24,28,36,0.62)] bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_45%,rgba(0,0,0,0.12)_100%)] hover:bg-[rgba(19,22,29,0.68)] text-[#D5D9E0] border-white/[0.12] ring-2 ring-[#B4BBC7]/90 hover:border-white/[0.2] shadow-[inset_0_0.5px_0_rgba(255,255,255,0.18),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_0_12px_rgba(180,187,199,0.32),0_8px_24px_rgba(0,0,0,0.35)]",
 			},
 			size: {
-				default: "px-2 py-1.5 h-[32px]",
+				default: "px-4 py-1 h-8",
 			},
 		},
 		defaultVariants: {
@@ -74,9 +73,8 @@ function Button(props: ButtonProps) {
 			ref={ref}
 			className={cn(
 				buttonVariants({ variant: variant as ButtonVariant }),
-				isDisabled && "opacity-30 cursor-not-allowed",
+				isDisabled && "opacity-40 cursor-not-allowed ring-0 shadow-none",
 				fullWidth && "w-full",
-				variant !== "link" && variant !== "ghost" && "shadow-surface",
 				className,
 			)}
 			onClick={onLoadingClick ? handleClick : onClick}
@@ -87,10 +85,10 @@ function Button(props: ButtonProps) {
 			{...testIdProps(testID)}
 			{...rest}
 		>
-			{icon && !showIsLoading && <span className="mr-2">{icon}</span>}
+			{icon && !showIsLoading && <span className="mr-2 inline-flex items-center [&_svg]:size-3.5 [&_svg]:shrink-0">{icon}</span>}
 			{showIsLoading && (
 				<div className="absolute inset-0 flex items-center justify-center">
-					<Spinner buttonType={variant} size={16} />
+					<Spinner buttonType={variant} size={14} />
 				</div>
 			)}
 

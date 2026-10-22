@@ -42,8 +42,8 @@ function Toggle(props: ToggleProps) {
 					style={(state) => ({
 						width: dimensions.root.width,
 						height: dimensions.root.height,
-						backgroundColor: state.checked ? "#4D8EF3" : "#eeeff1",
-						transition: "background-color 200ms ease-out",
+						backgroundImage: state.checked ? "linear-gradient(180deg,rgba(255,255,255,0.08) 0%,rgba(255,255,255,0.02) 45%,rgba(0,0,0,0.18) 100%)" : "linear-gradient(180deg,rgba(255,255,255,0.14) 0%,rgba(255,255,255,0.04) 45%,rgba(0,0,0,0.12) 100%)",
+						transition: "background-image 200ms ease-out",
 					})}
 				>
 					<Switch.Thumb
@@ -58,7 +58,7 @@ function Toggle(props: ToggleProps) {
 			</label>
 			{additionalText && variant === "toggle-right" && (
 				<div className="mt-1">
-					<span className="text-sm font-light text-Secondary/Tag-Hints">{additionalText}</span>
+					<span className="text-xs font-light text-[#7F8898]">{additionalText}</span>
 				</div>
 			)}
 		</div>

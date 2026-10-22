@@ -11,16 +11,10 @@ export function Spinner(props: SpinnerProps) {
 
 	const color: string | undefined = useMemo(() => {
 		switch (buttonType) {
-			case "primary":
-				return "#fff";
-			case "secondary":
-				return "#4D8EF3";
 			case "danger":
-				return "#EA4436";
-			case "info":
-				return "#394347";
+				return "#FCA5A5";
 			default:
-				return undefined;
+				return "#F97316";
 		}
 	}, [buttonType]);
 

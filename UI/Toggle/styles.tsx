@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const wrapperVariants = cva(
-	"flex items-center justify-between gap-6 font-primary text-Secondary/Default font-light select-none",
+	"flex items-center justify-between gap-6 font-primary text-[#D5D9E0] font-light select-none",
 	{
 		variants: {
 			disabled: {
@@ -15,15 +15,15 @@ export const wrapperVariants = cva(
 	},
 );
 
-export const labelVariants = cva("flex text-Secondary/Default", {
+export const labelVariants = cva("flex text-[#D5D9E0]", {
 	variants: {
 		variant: {
 			"toggle-left": "order-2",
 			"toggle-right": "order-1",
 		},
 		size: {
-			small: "text-base",
-			large: "text-base",
+			small: "text-[13px]",
+			large: "text-[13px]",
 		},
 		fontWeight: {
 			normal: "font-normal",
@@ -39,9 +39,9 @@ export const labelVariants = cva("flex text-Secondary/Default", {
 
 export const switchRootVariants = cva(
 	[
-		"relative inline-flex items-center rounded-full p-[2px] shrink-0 shadow-inner",
+		"relative inline-flex items-center rounded-full p-[2px] shrink-0 border-[0.5px] border-white/[0.08] bg-[rgba(24,28,36,0.62)] backdrop-blur-xl backdrop-saturate-150 shadow-[inset_0_0.5px_0_rgba(255,255,255,0.18),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_4px_12px_rgba(0,0,0,0.35)]",
 		"outline-none",
-		"focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500",
+		"focus-visible:ring-2 focus-visible:ring-[#F97316] focus-visible:shadow-[inset_0_0.5px_0_rgba(255,255,255,0.18),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_0_12px_rgba(249,115,22,0.45),0_4px_12px_rgba(0,0,0,0.35)] data-[checked]:ring-2 data-[checked]:ring-[#F97316] data-[checked]:shadow-[inset_0_0.5px_0_rgba(255,255,255,0.18),inset_0_-0.5px_0_rgba(0,0,0,0.35),0_0_12px_rgba(249,115,22,0.45),0_4px_12px_rgba(0,0,0,0.35)] data-[disabled]:shadow-none data-[disabled]:ring-0",
 	],
 	{
 		variants: {
@@ -57,7 +57,7 @@ export const switchRootVariants = cva(
 );
 
 export const switchThumbVariants = cva([
-	"block rounded-full border bg-white border-Primary/Dark data-[checked]:border-Highlight-1/DarkAccessible",
-	"shadow-modal",
+	"block rounded-full border-[0.5px] bg-[#9AA1AD] border-white/[0.08] data-[checked]:bg-[#D5D9E0] data-[checked]:border-white/[0.25]",
+	"shadow-[0_2px_6px_rgba(0,0,0,0.5)]",
 	"transition-transform duration-200 ease-out",
 ]);

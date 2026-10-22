@@ -126,7 +126,7 @@ export const FullWidth: Story = {
 
 export const AllVariants: Story = {
 	render: () => (
-		<div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+		<div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px" }}>
 			<Button variant="primary">Primary</Button>
 			<Button variant="secondary">Secondary</Button>
 			<Button variant="danger">Danger</Button>

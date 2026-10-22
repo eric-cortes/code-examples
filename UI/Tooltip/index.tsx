@@ -9,7 +9,7 @@ import { animationStyles } from "./styles";
 import type { TooltipProps } from "./types";
 
 function Tooltip(props: TooltipProps) {
-	const { children, text, tooltipKey, side = "top", disabled = false, style, className, testID } = props;
+	const { children, text, tooltipKey, side = "bottom", disabled = false, style, className, testID } = props;
 
 	if (disabled) {
 		return <>{children}</>;
@@ -23,23 +23,24 @@ function Tooltip(props: TooltipProps) {
 				</TooltipPrimitive.Trigger>
 				<TooltipPrimitive.Portal>
 					<style>{animationStyles}</style>
-					<TooltipPrimitive.Positioner side={side} sideOffset={4} className="z-50">
+					<TooltipPrimitive.Positioner side={side} sideOffset={14} collisionAvoidance={{ side: "none", fallbackAxisSide: "none" }} className="z-50">
 						<TooltipPrimitive.Popup
 							className={cn(
 								"tooltip-popup",
-								"bg-Secondary/Default/90 px-3 py-2 rounded-lg z-50",
+								"bg-[#353B47] border-[0.5px] border-white/[0.08] shadow-none px-3 py-2 rounded-md z-50",
 								className,
 							)}
 							style={style}
 							{...testIdProps(testID)}
 						>
+							<TooltipPrimitive.Arrow className="size-2.5 rotate-45 bg-[#353B47] border-[0.5px] border-white/[0.08] border-b-0 border-r-0 data-[side=bottom]:-top-[5px] data-[side=top]:-bottom-[5px] data-[side=top]:rotate-[225deg] data-[side=left]:-right-[5px] data-[side=left]:rotate-[135deg] data-[side=right]:-left-[5px] data-[side=right]:-rotate-45" />
 							<div className="flex items-center justify-start gap-2">
-								<Text size="sm" color="White" className="break-words whitespace-normal">
+								<Text size="xs" className="break-words whitespace-normal text-[#D5D9E0]">
 									<span className="text-left">{text}</span>
 								</Text>
 								{tooltipKey && tooltipKey !== "" && (
-									<div className="border border-Secondary/Placeholder bg-Primary/Light/70 px-1 py-0.5 rounded flex-shrink-0 shadow-sm">
-										<Text size="xs" color="Secondary/Default" weight="normal">
+									<div className="border-[0.5px] border-white/[0.12] bg-white/10 px-1.5 py-0.5 rounded flex-shrink-0">
+										<Text size="xs" weight="normal" className="text-[#D5D9E0]">
 											{tooltipKey}
 										</Text>
 									</div>

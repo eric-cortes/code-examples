@@ -13,22 +13,4 @@ export const animationStyles = `
 	.tooltip-popup[data-instant] {
 		transition: none;
 	}
-	.tooltip-arrow {
-		width: 8px;
-		height: 4px;
-	}
-	.tooltip-arrow svg {
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-	.tooltip-arrow[data-side="top"] {
-		transform: rotate(180deg);
-	}
-	.tooltip-arrow[data-side="left"] {
-		transform: rotate(90deg);
-	}
-	.tooltip-arrow[data-side="right"] {
-		transform: rotate(-90deg);
-	}
 `;

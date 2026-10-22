@@ -11,17 +11,23 @@ const meta: Meta<typeof Tooltip> = {
 	parameters: {
 		componentSubtitle: "Base UI tooltip with design-system styling",
 	},
+	decorators: [
+		(Story) => (
+			<div style={{ padding: "64px", display: "flex", justifyContent: "center" }}>
+				<Story />
+			</div>
+		),
+	],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Tooltip>;
 
-export const Top: Story = {
+export const Default: Story = {
 	args: {
 		text: "This is a helpful tooltip",
-		side: "top",
-		children: <Button variant="primary">Hover me (Top)</Button>,
+		children: <Button variant="primary">Hover me</Button>,
 	},
 	play: async ({ canvas, canvasElement, userEvent }) => {
 		const trigger = canvas.getByRole("button");
@@ -30,6 +36,14 @@ export const Top: Story = {
 		// Tooltip renders as a portal, so query the whole document
 		const body = within(canvasElement.ownerDocument.body);
 		await expect(await body.findByText("This is a helpful tooltip")).toBeInTheDocument();
+	},
+};
+
+export const Top: Story = {
+	args: {
+		text: "This is a helpful tooltip",
+		side: "top",
+		children: <Button variant="primary">Hover me (Top)</Button>,
 	},
 };
 
@@ -61,7 +75,6 @@ export const WithKeyboardShortcut: Story = {
 	args: {
 		text: "Save document",
 		tooltipKey: "⌘S",
-		side: "top",
 		children: <Button variant="primary">Save</Button>,
 	},
 	play: async ({ canvas, canvasElement, userEvent }) => {
