@@ -40,13 +40,15 @@ describe("Spinner component", () => {
 		expect(screen.getByRole("status")).toHaveClass("custom-class", "animate-spin");
 	});
 
-	it("uses currentColor by default and a fixed color for a buttonType", () => {
+	it("uses the orange color by default and a lighter red for the danger buttonType", () => {
 		const { rerender } = render(<Spinner />);
 
-		expect(screen.getByRole("status")).toHaveAttribute("stroke", "currentColor");
+		expect(screen.getByRole("status")).toHaveAttribute("stroke", "#F97316");
+		expect(screen.getByRole("status")).toHaveAttribute("fill", "#F97316");
 
-		rerender(<Spinner buttonType="primary" />);
+		rerender(<Spinner buttonType="danger" />);
 
-		expect(screen.getByRole("status")).toHaveAttribute("stroke", "#fff");
+		expect(screen.getByRole("status")).toHaveAttribute("stroke", "#FCA5A5");
+		expect(screen.getByRole("status")).toHaveAttribute("fill", "#FCA5A5");
 	});
 });

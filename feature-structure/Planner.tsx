@@ -1,10 +1,12 @@
 'use client';
 import GoogleMap from '@/components/MapGoogle/GoogleMap';
 import Bookings from '@/components/Planner/Bookings/Bookings';
+import type { BookingData } from '@/components/Planner/Bookings/Booking';
+import type { TeamData } from '@/components/Planner/Teams/Team';
 import Plans from '@/components/Planner/Plans/Plans';
 import Teams from '@/components/Planner/Teams/Teams';
 import { useAppContext } from '@/context/appContext';
-import useObjetcsStore from '@/stores/objectsStore';
+import useObjectsStore from '@/stores/objectsStore';
 import { convertToISOString, convertToYYYYMMDD } from '@/util/goodies';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -14,6 +16,9 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { mutate } from 'swr';
 import { Loader } from '../Loader/Loader';
+
+type StrategyOption = { id: string; value: string };
+type Plan = { id: string; readableId?: string; summary?: { tours: never[] } };
 
 export default function Planner() {
     const { userRole, currentTenant } = useAppContext();
@@ -25,12 +30,12 @@ export default function Planner() {
         }
     }, [userRole]);
 
-    const { objectsData: { objectStatus: responsibilities } } = useObjetcsStore();
+    const responsibilities = useObjectsStore((state) => state.objectsData.objectStatus.data) as Array<{ id: string }>;
 
     //Start Component
     const bookingDateString = typeof window !== 'undefined' ? localStorage.getItem('bookingDate') : null;
     const bookingDate = bookingDateString ? new Date(bookingDateString) : new Date();
-    const [startDate, setStartDate] = useState<any>(bookingDate);
+    const [startDate, setStartDate] = useState<Date>(bookingDate);
 
     useEffect(() => {
         if (isNaN(bookingDate.getTime())) {
@@ -38,7 +43,7 @@ export default function Planner() {
         }
     }, [bookingDate]);
 
-    const [dataSourceRiders] = useState<any[]>([]);
+    const dataSourceRiders: never[] = [];
     const [buttonLabelCreatePlan, setButtonLabelCreatePlan] = useState('Plan erstellen');
     const [buttonLabelCreateTour, setButtonLabelCreateTour] = useState('Tour erstellen');
 
@@ -56,7 +61,7 @@ export default function Planner() {
     const [selectedStrategyOption, setSelectedStrategy] = useState<string | null>(
         'Eko-orientiert (bevorzugt kurze Wege'
     );
-    const handleStrategySelect = (selectedOption: any) => {
+    const handleStrategySelect = (selectedOption: StrategyOption) => {
         setSelectedStrategyId(Number(selectedOption.id));
         if (selectedStrategyOption === selectedOption.value) {
             setSelectedStrategy(null);
@@ -66,10 +71,10 @@ export default function Planner() {
         }
     };
 
-    const currentPlanDate = convertToISOString(startDate);
-    const currentBookingDate = convertToYYYYMMDD(startDate);
+    const currentPlanDate = convertToISOString(startDate) ?? new Date().toISOString();
+    const currentBookingDate = convertToYYYYMMDD(startDate) ?? "";
 
-    function setBookingDate(date: any) {
+    function setBookingDate(date: Date) {
         const currentBookingDate = convertToYYYYMMDD(date);
         localStorage.setItem('bookingDate', currentBookingDate);
     }
@@ -82,19 +87,16 @@ export default function Planner() {
         setSelectedPlan([]);
     }
 
-    const formattedDate = convertToYYYYMMDD(currentPlanDate);
+    const formattedDate = convertToYYYYMMDD(currentPlanDate) ?? "";
 
-    const getObjectReadableIds = (ids: string[]) => {
-        return (
-            ids.map((id) => responsibilities.find((resp: any) => resp.id === id)?.id).filter(Boolean)
-        )
-    }
+    const getObjectReadableIds = (ids: string[]) =>
+        ids.filter((id) => responsibilities.some((responsibility) => responsibility.id === id));
 
     /// Driver HomebaseLat HomebaseLng
     async function handleCreatePlan(event: SyntheticEvent) {
-        const drivers = teams.flatMap((team: any) => {
+        const drivers = teams.flatMap((team) => {
             return (
-                team.drivers.map((driverId: string) => ({
+                team.drivers.map((driverId) => ({
                     id: driverId,
                     responsibilityIds: getObjectReadableIds(team.responsibilities),
                     lat: team.homebaseLat,
@@ -103,7 +105,7 @@ export default function Planner() {
             )
         });
 
-        const bookingsArray = bookings.map((booking: any) => booking.id)
+        const bookingsArray = bookings.map((booking) => booking.id)
         event.preventDefault();
         const updatedData = {
             optimizationStrategy: selectedStrategyId,
@@ -141,6 +143,7 @@ export default function Planner() {
     }
 
     async function handleCreateTour(event: SyntheticEvent) {
+        if (!selectedPlan) return;
         setIsLoading(true)
         setButtonLabelCreateTour('wird erstellt')
         const updatedData = {
@@ -168,12 +171,12 @@ export default function Planner() {
         }
     }
 
-    const [bookings, setBookings] = useState<any[]>([]);
-    const [teams, setTeams] = useState<any>([]);
-    const [selectedPlan, setSelectedPlan] = useState<any>([]);
+    const [bookings, setBookings] = useState<BookingData[]>([]);
+    const [teams, setTeams] = useState<TeamData[]>([]);
+    const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
 
     const showCreatePlan = bookings.length > 0 && teams.length > 0 && selectedStrategyId !== null;
-    const showCreateTour = selectedPlan.length !== 0;
+    const showCreateTour = selectedPlan !== null;
 
     return (
         <>
@@ -201,6 +204,7 @@ export default function Planner() {
                                 className="h-[3em]"
                                 disabledKeyboardNavigation
                                 onChange={(date) => {
+                                    if (!date) return;
                                     setStartDate(date);
                                     setBookingDate(date);
                                     clearFields();

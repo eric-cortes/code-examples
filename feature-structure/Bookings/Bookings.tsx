@@ -1,254 +1,45 @@
-import { Heading, Text, Checkbox, Button } from 'rds-ui-system';
-import { forwardRef, LegacyRef, SyntheticEvent, useEffect, useRef, useState } from 'react';
-import Booking from '@/components/Planner/Bookings/Booking';
-import useFetch from '@/hooks/useFetch';
-import DatePicker, { registerLocale } from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { mutate } from 'swr';
-import { Loader } from '@/components/Loader/Loader';
-import useObjetcsStore from '@/stores/objectsStore';
+import { forwardRef, useEffect, useMemo, useRef, useState, type SyntheticEvent } from "react";
+import DatePicker from "react-datepicker";
+import { mutate } from "swr";
+import { Button, Checkbox, Heading, Text } from "rds-ui-system";
 
-interface Props {
-    currentBookingDate: string;
-    bookings: any;
-    setBookings: (value: any) => void;
-    currentPlanDate: string;
-    currentTenant: string;
-}
+import Booking, { type BookingData, type Model, type Status } from "./Booking";
+import { Loader } from "@/components/Loader/Loader";
+import useFetch from "@/hooks/useFetch";
+import useObjectsStore from "@/stores/objectsStore";
 
-export default function Bookings({ currentBookingDate, bookings, setBookings, currentPlanDate, currentTenant }: Props) {
-    const [sortColumn, setSortColumn] = useState<string>('date');
-    const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
-    const { objectsData: { objectStatus, objectModel }, } = useObjetcsStore();
+type Props = { currentBookingDate: string; currentPlanDate: string; currentTenant: string; bookings: BookingData[]; setBookings: React.Dispatch<React.SetStateAction<BookingData[]>> };
+const DatePickerButton = forwardRef<HTMLButtonElement, { onClick?: () => void; visible: boolean }>(({ onClick, visible }, ref) => <Button ref={ref} type="button" customClasses={visible ? "visible" : "invisible"} onClick={onClick}>Datum ändern</Button>);
+DatePickerButton.displayName = "DatePickerButton";
 
-    const { data: bookingsCurrentDate, error, isLoading } = useFetch(
-        (currentTenant && currentBookingDate)
-            ? `/api/booking?day=${currentBookingDate}&tenantid=${currentTenant}`
-            : null,
-        {
-            keepPreviousData: true,
-            revalidateOnFocus: false
-        }
-    );
+export default function Bookings({ currentBookingDate, currentPlanDate, currentTenant, bookings: selectedBookings, setBookings }: Props) {
+	const { objectsData } = useObjectsStore();
+	const objectStatus = objectsData.objectStatus.data as Status[];
+	const objectModel = objectsData.objectModel.data as Model[];
+	const [sortColumn, setSortColumn] = useState<"date" | "status" | "address">("date");
+	const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+	const [startDate, setStartDate] = useState<Date | null>(new Date());
+	const datePickerRef = useRef<DatePicker>(null);
+	const endpoint = currentTenant && currentBookingDate ? `/api/booking?day=${currentBookingDate}&tenantid=${encodeURIComponent(currentTenant)}` : null;
+	const { data: sourceBookings = [], error, isLoading } = useFetch<BookingData[]>(endpoint, { keepPreviousData: true, revalidateOnFocus: false });
+	const selectedIds = useMemo(() => new Set(selectedBookings.map(({ id }) => id)), [selectedBookings]);
 
-    const dataSourceBookings = bookingsCurrentDate
+	useEffect(() => { const sourceIds = new Set(sourceBookings.map(({ id }) => id)); setBookings((current) => current.filter(({ id }) => sourceIds.has(id))); }, [sourceBookings, setBookings]);
+	const sortedBookings = useMemo(() => [...sourceBookings].sort((left, right) => {
+		const direction = sortDirection === "asc" ? 1 : -1;
+		if (sortColumn === "date") return ((Date.parse(left.bookingDate ?? "") || 0) - (Date.parse(right.bookingDate ?? "") || 0)) * direction;
+		const getValue = (booking: BookingData) => sortColumn === "status" ? booking.objectStatusIds?.join(",") ?? "" : booking.locationAddress?.street ?? "";
+		return getValue(left).localeCompare(getValue(right)) * direction;
+	}), [sourceBookings, sortColumn, sortDirection]);
+	const toggleSort = (column: "date" | "status" | "address") => { setSortDirection((direction) => sortColumn === column && direction === "asc" ? "desc" : "asc"); setSortColumn(column); };
+	const toggleBooking = (booking: BookingData) => setBookings((current) => selectedIds.has(booking.id) ? current.filter(({ id }) => id !== booking.id) : [...current, booking]);
+	const saveMove = async (event: SyntheticEvent) => {
+		event.preventDefault();
+		if (!startDate || selectedBookings.length === 0) return;
+		const response = await fetch(`/api/booking/bulk?tenantId=${encodeURIComponent(currentTenant)}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ bookingDate: startDate.toISOString(), ids: selectedBookings.map(({ id }) => id) }) });
+		if (!response.ok) throw new Error("Unable to move bookings");
+		await mutate(endpoint); setBookings([]); datePickerRef.current?.setOpen(false);
+	};
 
-    const handleAddBooking = (item: any) => {
-        setBookings((prevBookings: any) => {
-            if (prevBookings.includes(item)) {
-                return prevBookings.filter((booking: any) => booking !== item);
-            } else {
-                return [...prevBookings, item];
-            }
-        });
-    };
-
-    const handleSelectAllBookings = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.checked) {
-            setBookings(dataSourceBookings);
-        } else {
-            setBookings([]);
-        }
-    };
-
-    const handleSort = (column: string) => {
-        let direction: 'asc' | 'desc' = 'asc';
-        if (sortColumn === column) {
-            direction = sortDirection === 'asc' ? 'desc' : 'asc';
-        }
-        setSortColumn(column);
-        setSortDirection(direction);
-    };
-
-    const sortedBookings = [...(dataSourceBookings || [])].sort((a, b) => {
-        if (sortColumn === 'date') {
-            const dateA = new Date(a.createdAt).getTime();
-            const dateB = new Date(b.createdAt).getTime();
-            return sortDirection === 'asc' ? dateA - dateB : dateB - dateA;
-        } else {
-            const valueA = a[sortColumn]?.toString().toLowerCase() || '';
-            const valueB = b[sortColumn]?.toString().toLowerCase() || '';
-            if (valueA < valueB) return sortDirection === 'asc' ? -1 : 1;
-            if (valueA > valueB) return sortDirection === 'asc' ? 1 : -1;
-            return 0;
-        }
-    });
-
-    //// Move booking date
-    const [startDate, setStartDate] = useState(new Date());
-    const [convertedDateStr, setConvertedDateStr] = useState(startDate.toISOString());
-    const datePickerRef = useRef<any>(null);
-
-    useEffect(() => {
-        setConvertedDateStr(startDate.toISOString());
-    }, [startDate]);
-
-    const closeDataPicker = () => {
-        const simulateClick = new MouseEvent('mousedown', {
-            view: window,
-            bubbles: true,
-            cancelable: true,
-        });
-        const outsideElement = document.getElementById('outside-element');
-        if (outsideElement) {
-            outsideElement.dispatchEvent(simulateClick);
-        }
-    };
-
-    async function handleSave(event?: SyntheticEvent) {
-        if (event) event.preventDefault();
-        const newBookings = bookings.map((item: any) => item.id);
-        const updatedData = {
-            "bookingDate": convertedDateStr,
-            "ids": newBookings,
-        }
-        try {
-            const res = await fetch(`/api/booking/bulk?tenantId=${currentTenant}`, {
-                method: 'PUT',
-                body: JSON.stringify(updatedData)
-            });
-            if (res.ok === true) {
-                mutate(`/api/booking?day=${currentBookingDate}&tenantid=${currentTenant}`)
-                datePickerRef.current.setOpen(false);
-                setBookings([])
-            } else {
-                throw new Error('Failed to update item name');
-            }
-        } catch (error) {
-            console.error('Error updating item name:', error);
-        }
-    }
-
-    const ExampleCustomInput = forwardRef(
-        ({ onClick, className }: any, ref: LegacyRef<HTMLDivElement> | undefined) => (
-            <div className={className} onClick={onClick} ref={ref}>
-                <Button
-                    type="button"
-                    customClasses={`
-                        ${bookings.length > 0
-                            ? 'visible'
-                            : 'hidden'}`
-                    }
-                >
-                    Datum ändern
-                </Button>
-            </div>
-        ),
-    );
-    ExampleCustomInput.displayName = 'ExampleCustomInput';
-
-    const displayDataBookings = dataSourceBookings && dataSourceBookings.length > 0;
-
-    return (
-        <>
-            <div className="px-2 md:space-y-2">
-                <div className='flex items-center space-x-2 h-[2.5em] justify-between'>
-                    <Heading variant="h3">Aufträge</Heading>
-                    <div className='w-[10em]'>
-                        <DatePicker
-                            ref={datePickerRef}
-                            withPortal
-                            showMonthDropdown
-                            showYearDropdown
-                            dropdownMode="select"
-                            calendarClassName="move-bookings"
-                            className="planner"
-                            selected={startDate}
-                            shouldCloseOnSelect={false}
-                            dateFormat="dd.MM.yyyy"
-                            onChange={(date: any) => {
-                                setStartDate(date)
-                            }}
-                            customInput={<ExampleCustomInput />}
-                        >
-                            <div className="absolute z-10 left-[1.5em] bottom-[1em] space-x-4 w-1/2 h-[3em]">
-                                <button
-                                    disabled={!startDate}
-                                    type="button"
-                                    className={`${(!startDate)
-                                        ? 'cursor-not-allowed pointer-events-none bg-[#e9e8ea]'
-                                        : 'bg-black text-brand-white'}  rounded py-3 px-4`}
-                                    onClick={() => {
-                                        handleSave();
-                                        closeDataPicker()
-                                    }}>
-                                    Speichern
-                                </button>
-                            </div>
-                        </DatePicker>
-                    </div>
-                </div>
-                <div className="md:h-[26.5em] lg:h-[26.5em] overflow-hidden rounded">
-                    <div className="md:my-[1em] w-[100%] mx-auto md:flex md:h-auto">
-                        <div className="flex justify-start md:!grid lg:!grid grid-cols-8 gap-2 w-full [&>*]:font-semibold
-                            [&>*]:uppercase place-items-center py-[0.5em] [&>:not(:first-child)]:hidden [&>:not(:first-child)]:md:grid"
-                        >
-                            <div className='mx-[0.75em] flex space-x-3 [&>:last-child]:md:hidden'>
-                                <Checkbox
-                                    id="Checkbox All"
-                                    onChange={handleSelectAllBookings}
-                                    checked={bookings.length > 0}
-                                />
-                                <Text>Alle auswählen</Text>
-                            </div>
-                            <Text>Bild</Text>
-                            {/* <div onClick={() => handleSort('objectModel')} className="cursor-pointer">
-                                <Text>
-                                    Objekt {sortColumn === 'objectModel' && (sortDirection === 'asc' ? '↑' : '↓')}
-                                </Text>
-                            </div> */}
-                            <div onClick={() => handleSort('objectStatus')} className="col-span-2 cursor-pointer">
-                                <Text>
-                                    Status {sortColumn === 'objectStatus' && (sortDirection === 'asc' ? '↑' : '↓')}
-                                </Text>
-                            </div>
-                            <div onClick={() => handleSort('date')} className="cursor-pointer">
-                                <Text customClasses="col-span-2">
-                                    Date {sortColumn === 'date' && (sortDirection === 'asc' ? '↑' : '↓')}
-                                </Text>
-                            </div>
-                            <div onClick={() => handleSort('street')} className="col-span-2 cursor-pointer">
-                                <Text customClasses="col-span-2">
-                                    Adresse {sortColumn === 'street' && (sortDirection === 'asc' ? '↑' : '↓')}
-                                </Text>
-                            </div>
-                            <Text>Edit</Text>
-                        </div>
-                    </div>
-                    {dataSourceBookings && dataSourceBookings.length === 0 && !isLoading && (
-                        <div className="p-10">Keine Aufträge für dieses Datum</div>
-                    )}
-                    {isLoading && (
-                        <>
-                            <div className='absolute p-10'>
-                                Aufträge werden geladen
-                            </div>
-                            <Loader pos='relative' />
-                        </>
-                    )}
-                    <div
-                        className={`showScrollBars overflow-y-auto overflow-x-hidden max-h-[50vh] md:pb-[8em] rounded transition-opacity duration-200 
-                            border border-1 md:!border-0 ${displayDataBookings ? 'opacity-100' : 'opacity-0'}`}
-                    >
-                        {sortedBookings.map((item, i) => (
-                            <div
-                                className="flex mb-2 cursor-default md:py-1 md:my-2 transition-color hover:bg-slate-100"
-                                key={i}
-                            >
-                                <Booking
-                                    data={item}
-                                    objectStatus={objectStatus}
-                                    objectModel={objectModel}
-                                    handleAddBooking={handleAddBooking}
-                                    isChecked={bookings.includes(item)}
-                                    currentPlanDate={currentPlanDate}
-                                    currentBookingDate={currentBookingDate}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+	return <div className="px-2 md:space-y-2"><div className="flex h-10 items-center justify-between"><Heading variant="h3">Aufträge</Heading><DatePicker ref={datePickerRef} selected={startDate} onChange={setStartDate} shouldCloseOnSelect={false} dateFormat="dd.MM.yyyy" customInput={<DatePickerButton visible={selectedBookings.length > 0} />}><button type="button" disabled={!startDate} onClick={(event) => void saveMove(event)}>Speichern</button></DatePicker></div><div className="overflow-hidden rounded md:h-[26.5em]"><div className="grid grid-cols-8 place-items-center gap-2 py-2 font-semibold uppercase"><Checkbox id="select-all-bookings" onChange={(event: React.ChangeEvent<HTMLInputElement>) => setBookings(event.target.checked ? sourceBookings : [])} checked={sourceBookings.length > 0 && selectedBookings.length === sourceBookings.length} /><Text>Bild</Text><button type="button" className="col-span-2" onClick={() => toggleSort("status")}>Status</button><button type="button" onClick={() => toggleSort("date")}>Date</button><button type="button" className="col-span-2" onClick={() => toggleSort("address")}>Adresse</button><Text>Edit</Text></div>{error && <div className="p-10">Aufträge konnten nicht geladen werden.</div>}{isLoading && <Loader pos="relative" />}{!isLoading && !error && sourceBookings.length === 0 && <div className="p-10">Keine Aufträge für dieses Datum</div>}<div className="showScrollBars max-h-[50vh] overflow-y-auto rounded">{sortedBookings.map((booking) => <div key={booking.id} className="mb-2 flex cursor-default md:my-2 md:py-1"><Booking data={booking} objectStatus={objectStatus} objectModel={objectModel} onToggle={toggleBooking} isSelected={selectedIds.has(booking.id)} currentPlanDate={currentPlanDate} currentBookingDate={currentBookingDate} /></div>)}</div></div></div>;
 }

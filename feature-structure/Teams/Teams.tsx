@@ -1,118 +1,23 @@
-import { Heading, Text, Checkbox } from 'rds-ui-system';
-import Team from '@/components/Planner/Teams/Team';
-import 'react-datepicker/dist/react-datepicker.css';
-import useFetch from '@/hooks/useFetch';
-import { useEffect, useState } from 'react';
-import { useAppContext } from '@/context/appContext';
-import { Loader } from '@/components/Loader/Loader';
+import { useEffect, useMemo } from "react";
+import { Checkbox, Heading, Text } from "rds-ui-system";
 
-interface Props {
-    teams: any
-    setTeams: (value: any) => void;
-}
+import Team, { type Responsibility, type TeamData } from "./Team";
+import { Loader } from "@/components/Loader/Loader";
+import { useAppContext } from "@/context/appContext";
+import useFetch from "@/hooks/useFetch";
+import useObjectsStore from "@/stores/objectsStore";
 
-export default function Teams({ setTeams, teams }: Props) {
-    const { currentTenant } = useAppContext();
+type Props = { teams: TeamData[]; setTeams: React.Dispatch<React.SetStateAction<TeamData[]>> };
 
-    const { data: dataSourceTeams, error, isLoading } = useFetch(`/api/teams?tenantId=${encodeURIComponent(currentTenant)}`, {
-        revalidateOnFocus: false
-    });
-    const [filteredTeams, setFilteredTeams] = useState<any[]>([]);
+export default function Teams({ teams, setTeams }: Props) {
+	const { currentTenant } = useAppContext();
+	const responsibilities = useObjectsStore((state) => state.objectsData.objectStatus.data as Responsibility[]);
+	const { data: sourceTeams = [], error, isLoading } = useFetch<TeamData[]>(currentTenant ? `/api/teams?tenantId=${encodeURIComponent(currentTenant)}` : null, { revalidateOnFocus: false });
+	const eligibleTeams = useMemo(() => sourceTeams.filter((team) => team.responsibilities.length > 0 && team.drivers.length > 0), [sourceTeams]);
+	const selectedIds = useMemo(() => new Set(teams.map(({ id }) => id)), [teams]);
 
-    useEffect(() => {
-        if (dataSourceTeams) {
-            const filtered = dataSourceTeams.filter((team: any) =>
-                Array.isArray(team.responsibilities) && team.responsibilities.length > 0 &&
-                Array.isArray(team.drivers) && team.drivers.length > 0
-            );
-            setFilteredTeams(filtered);
-        }
-    }, [dataSourceTeams]);
+	useEffect(() => { const availableIds = new Set(eligibleTeams.map(({ id }) => id)); setTeams((current) => current.filter(({ id }) => availableIds.has(id))); }, [eligibleTeams, setTeams]);
+	const toggleTeam = (team: TeamData) => setTeams((current) => selectedIds.has(team.id) ? current.filter(({ id }) => id !== team.id) : [...current, team]);
 
-
-    const handleAddTeam = (item: any) => {
-        setTeams((prevRiders: any) => {
-            if (prevRiders.includes(item)) {
-                return prevRiders.filter((riders: any) => riders !== item);
-            } else {
-                return [...prevRiders, item];
-            }
-        });
-    };
-
-    const handleSelectAllRiders = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.checked) {
-            setTeams(filteredTeams);
-        } else {
-            setTeams([]);
-        }
-    };
-
-    const displayDataRiders = filteredTeams && filteredTeams.length > 0
-
-    return (
-        <>
-            <div className="px-2 md:space-y-2">
-                <Heading variant='h3'>Teams</Heading>
-                <div className='md:h-[50.1vh] lg:h-[45.2vh] overflow-hidden rounded'>
-                    <div className="md:my-[1em] w-[100%] mx-auto md:flex md:h-auto">
-                        <div className="flex justify-start md:!grid lg:!grid grid-cols-8 gap-2 w-full [&>*]:font-semibold 
-                            [&>*]:uppercase place-items-center py-[0.5em] [&>:not(:first-child)]:hidden [&>:not(:first-child)]:md:grid"
-                        >
-                            <div className='mx-[0.75em] flex space-x-3 [&>:last-child]:md:hidden'>
-                                <Checkbox
-                                    id="Checkbox All"
-                                    onChange={handleSelectAllRiders}
-                                    checked={teams.length > 0 ? true : false}
-                                />
-                                <Text>Alle auswählen</Text>
-                            </div>
-                            <div className="col-span-2">
-                                <Text>Team</Text>
-                            </div>
-                            <Text>Arbz.</Text>
-                            <Text customClasses='col-span-2'>Zuständigkeit</Text>
-                            <Text>Homebase</Text>
-                            <Text>Edit</Text>
-                        </div>
-                    </div>
-                    {filteredTeams && filteredTeams.length === 0 && (
-                        <div className='p-10'>
-                            Keine Teams für dieses Datum
-                        </div>
-                    )}
-                    {isLoading && (
-                        <>
-                            <div className='absolute p-10'>
-                                Teams werden geladen
-                            </div>
-                            <Loader pos='relative' />
-                        </>
-                    )}
-                    <div className={`showScrollBars overflow-y-auto max-h-[50vh] md:pb-[8em] rounded transition-opacity duration-200 
-                        border border-1 md:!border-0 ${displayDataRiders ? 'opacity-100' : 'opacity-100'}`}
-                    >
-                        {filteredTeams && (filteredTeams as Array<any>)
-                            .slice()
-                            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-                            .map((item, i) => {
-
-                                return (
-                                    <div
-                                        className='flex mb-2 cursor-default md:py-1 md:my-2 transition-color hover:bg-slate-100'
-                                        key={i}
-                                    >
-                                        <Team
-                                            data={item}
-                                            handleAddTeam={handleAddTeam}
-                                            isChecked={teams.includes(item)}
-                                        />
-                                    </div>
-                                );
-                            })}
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+	return <div className="px-2 md:space-y-2"><Heading variant="h3">Teams</Heading><div className="overflow-hidden rounded md:h-[50.1vh] lg:h-[45.2vh]"><div className="grid grid-cols-8 place-items-center gap-2 py-2 font-semibold uppercase"><Checkbox id="select-all-teams" onChange={(event: React.ChangeEvent<HTMLInputElement>) => setTeams(event.target.checked ? eligibleTeams : [])} checked={eligibleTeams.length > 0 && teams.length === eligibleTeams.length} /><div className="col-span-2"><Text>Team</Text></div><Text>Arbz.</Text><Text customClasses="col-span-2">Zuständigkeit</Text><Text>Homebase</Text><Text>Edit</Text></div>{error && <div className="p-10">Teams konnten nicht geladen werden.</div>}{isLoading && <Loader pos="relative" />}{!isLoading && !error && eligibleTeams.length === 0 && <div className="p-10">Keine Teams verfügbar</div>}<div className="showScrollBars max-h-[50vh] overflow-y-auto rounded">{eligibleTeams.toSorted((left, right) => left.name.localeCompare(right.name)).map((team) => <div key={team.id} className="mb-2 flex cursor-default md:my-2 md:py-1"><Team data={team} responsibilities={responsibilities} onToggle={toggleTeam} isSelected={selectedIds.has(team.id)} /></div>)}</div></div></div>;
 }

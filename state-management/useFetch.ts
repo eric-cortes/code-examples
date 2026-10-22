@@ -1,27 +1,18 @@
-import useSWR from 'swr';
-import { useEffect, useState } from 'react';
+import useSWR, { type SWRConfiguration } from "swr";
 
-const fetcher = (url: string) =>
-    fetch(url).then((res) => {
-        if (!res.ok) throw new Error('Failed to fetch');
-        return res.json();
-    });
+type FetchError = Error;
 
-const useFetch = (url: string | null, options?: any) => {
-    const { data, error, isValidating } = useSWR(url ? url : null, fetcher, {
-        ...options,
-    });
+async function fetcher<T>(url: string): Promise<T> {
+	const response = await fetch(url);
+	if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
+	return response.json() as Promise<T>;
+}
 
-    const [isInitialLoad, setIsInitialLoad] = useState(true);
-    const isLoading = isInitialLoad || isValidating;
+export default function useFetch<T>(url: string | null, options?: SWRConfiguration<T, FetchError>) {
+	const response = useSWR<T, FetchError>(url, fetcher<T>, options);
 
-    useEffect(() => {
-        if (!isValidating) {
-            setIsInitialLoad(false);
-        }
-    }, [isValidating]);
-
-    return { data, error, isLoading, isValidating };
-};
-
-export default useFetch;
+	return {
+		...response,
+		isLoading: response.isLoading,
+	};
+}

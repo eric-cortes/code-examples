@@ -43,6 +43,30 @@ describe("Tooltip component", () => {
 		expect(await screen.findByText("Helpful tip")).toBeInTheDocument();
 	});
 
+	it("is placed below the trigger by default and respects the side prop", async () => {
+		const { rerender } = render(
+			<Tooltip text="Helpful tip">
+				<button type="button">Hover me</button>
+			</Tooltip>,
+		);
+
+		await userEvent.hover(screen.getByRole("button", { name: "Hover me" }));
+
+		expect((await screen.findByText("Helpful tip")).closest("[data-side]")).toHaveAttribute("data-side", "bottom");
+
+		await userEvent.unhover(screen.getByRole("button", { name: "Hover me" }));
+
+		rerender(
+			<Tooltip text="Top tip" side="top">
+				<button type="button">Hover me</button>
+			</Tooltip>,
+		);
+
+		await userEvent.hover(screen.getByRole("button", { name: "Hover me" }));
+
+		expect((await screen.findByText("Top tip")).closest("[data-side]")).toHaveAttribute("data-side", "top");
+	});
+
 	it("shows tooltipKey next to the text", async () => {
 		render(
 			<Tooltip text="Save document" tooltipKey="Ctrl+S">
