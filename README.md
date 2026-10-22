@@ -28,8 +28,8 @@ real, multi-feature application.
   client, plus the backing Next.js route handlers and auth config.
 - [`maps-integration`](maps-integration) — Google Maps integration
   for the same app (markers, routes, polylines).
-- [`ui-components`](ui-components) — small standalone UI
-  primitives.
+- [`UI`](UI) — ten UI primitives from a production design system
+  (Base UI, Tailwind, `cva`), each with types, stories and tests.
 - [`state-management`](state-management) — a Zustand store, a
   data-fetching provider, and shared utility hooks/helpers.
 - [`devops`](devops) — CI/CD for the same app: an AWS
@@ -39,9 +39,6 @@ real, multi-feature application.
 - [`legacy-campaign-site`](legacy-campaign-site) — two
   representative files from an older vanilla-JS marketing site (see
   `leica/` for the full source).
-- [`ui-system`](ui-system) — a handful of components from a shared
-  component library (Vite + Storybook), each with matching tests and
-  stories.
 - [`reina`](reina) — a few components from Reina Eterna, an interactive
   documentary (Next.js) built for Taller de Historias en Imágenes
 - [`rawtherapy`](rawtherapy) — an AI psychotherapy patient simulator:
