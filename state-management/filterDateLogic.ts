@@ -2,7 +2,7 @@ const MILLISECONDS_PER_DAY = 86_400_000;
 const EXCEL_EPOCH_UTC = Date.UTC(1899, 11, 30);
 
 function toValidDate(value: string | number | Date): Date | null {
-	const date = value instanceof Date ? new Date(value) : new Date(value);
+	const date = new Date(value);
 	return Number.isNaN(date.getTime()) ? null : date;
 }
 

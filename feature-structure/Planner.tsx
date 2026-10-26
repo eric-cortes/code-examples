@@ -56,18 +56,14 @@ export default function Planner() {
         }
     ];
 
-    const [strategy, setStrategy] = useState('');
     const [selectedStrategyId, setSelectedStrategyId] = useState<number | null>(null);
-    const [selectedStrategyOption, setSelectedStrategy] = useState<string | null>(
-        'Eko-orientiert (bevorzugt kurze Wege'
-    );
+    const [selectedStrategyOption, setSelectedStrategy] = useState<string | null>(null);
     const handleStrategySelect = (selectedOption: StrategyOption) => {
         setSelectedStrategyId(Number(selectedOption.id));
         if (selectedStrategyOption === selectedOption.value) {
             setSelectedStrategy(null);
         } else {
             setSelectedStrategy(selectedOption.value);
-            setStrategy(selectedOption.value);
         }
     };
 
@@ -81,7 +77,7 @@ export default function Planner() {
 
     function clearFields() {
         setSelectedStrategyId(null);
-        setStrategy('');
+        setSelectedStrategy(null);
         setBookings([]);
         setTeams([]);
         setSelectedPlan([]);
@@ -231,7 +227,7 @@ export default function Planner() {
                         <Select
                             id="strategy"
                             label="Optimierungsstrategie"
-                            boxText={strategy ? strategy : 'Bitte auswählen'}
+                            boxText={selectedStrategyOption ?? 'Bitte auswählen'}
                             prepopulatedId={1}
                             onSelectionChange={handleStrategySelect}
                             options={strategyOptions}

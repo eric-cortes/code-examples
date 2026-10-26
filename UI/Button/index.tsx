@@ -80,7 +80,6 @@ function Button(props: ButtonProps) {
 			onClick={onLoadingClick ? handleClick : onClick}
 			disabled={isDisabled}
 			focusableWhenDisabled={allowFocus}
-			style={rest.style}
 			{...(showIsLoading && typeof children === "string" ? { "aria-label": children } : {})}
 			{...testIdProps(testID)}
 			{...rest}

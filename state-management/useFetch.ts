@@ -9,10 +9,5 @@ async function fetcher<T>(url: string): Promise<T> {
 }
 
 export default function useFetch<T>(url: string | null, options?: SWRConfiguration<T, FetchError>) {
-	const response = useSWR<T, FetchError>(url, fetcher<T>, options);
-
-	return {
-		...response,
-		isLoading: response.isLoading,
-	};
+	return useSWR<T, FetchError>(url, fetcher<T>, options);
 }
